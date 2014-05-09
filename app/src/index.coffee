@@ -21,6 +21,7 @@ $ =>
   $('body').addClass 'loaded'
 
   require './controllers/main'
+  require './controllers/settings'
 
   window.app = new App
     el: document.body

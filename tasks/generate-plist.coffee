@@ -6,7 +6,7 @@ packagePath = path.join(rootPath, 'package.json')
 shellPath = path.join(rootPath, 'atom-shell')
 origAppPath = path.join(shellPath, 'Atom.app')
 infoPlistPath = path.join(origAppPath, 'Contents', 'Info.plist')
-iconPath = path.join(origAppPath, 'Contents', 'Resources', 'kart.icns')
+iconPath = path.join(origAppPath, 'Contents', 'Resources', 'atom.icns')
 
 module.exports = (grunt) ->
   {cp, rm} = require('./task-helpers')(grunt)
@@ -33,7 +33,7 @@ module.exports = (grunt) ->
       <key>CFBundleIdentifier</key>
       <string>org.kart.desktop</string>
       <key>CFBundleExecutable</key>
-      <string>Kart</string>
+      <string>Atom</string>
       <key>CFBundleName</key>
       <string>#{name}</string>
       <key>CFBundleDisplayName</key>
@@ -47,7 +47,7 @@ module.exports = (grunt) ->
       <key>NSMainNibFile</key>
       <string>MainMenu</string>
       <key>NSPrincipalClass</key>
-      <string>KartApplication</string>
+      <string>AtomApplication</string>
       <key>NSSupportsAutomaticGraphicsSwitching</key>
       <true/>
       <key>CFBundleDocumentTypes</key>

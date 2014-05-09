@@ -1,0 +1,12 @@
+<div class="settings">
+  <h1>Settings</h1>
+
+  <p>Retroarch location</p>
+  <p id="retroarch_path"><%= @retroarchPath %></p>
+  <button id="retroarch_path_button">Change...</button>
+
+  <p>Roms location</p>
+  <p id="roms_path"><%= @romsPath %></p>
+  <button id="roms_path_button">Change...</button>
+
+</div>

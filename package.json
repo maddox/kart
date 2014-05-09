@@ -4,7 +4,7 @@
   "application": {
     "name": "Kart"
   },
-  "atomShellVersion": "0.12.2",
+  "atomShellVersion": "0.12.3",
   "devDependencies": {
     "grunt-download-atom-shell": "0.7.0",
     "fs-plus": "2.x",

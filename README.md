@@ -1,6 +1,6 @@
 # Kart!!
 
-Kart is a frontend to the amazing mult-emulating system
+Kart is a frontend to the amazing multi-emulating system
 [RetroArch](https://github.com/libretro/RetroArch).
 
 Kart aspires to be an extremely simple front end that lets you get up and

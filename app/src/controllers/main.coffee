@@ -44,7 +44,6 @@ class App.Main extends Spine.Controller
     @perPage = @rows * @perRow
     @numberOfPages = parseInt(@games.length / @perPage)
     @numberOfPages++ if @games.length % @perPage
-    console.log(@numberOfPages)
 
     @page = 0
     @x = -1

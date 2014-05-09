@@ -9,7 +9,7 @@ running fast with a classy way to pick and choose your games.
 Kart is targeted at running on a TV in an HTPC type set up, but can be run from
 a desktop window just fine.
 
-![kart emulator retroarch frontend](https://cloud.githubusercontent.com/assets/260/2924334/483a6a08-d730-11e3-9177-17ddf85671b1.png)
+![kart emulator retroarch frontend](https://cloud.githubusercontent.com/assets/260/2924359/aec71d2e-d731-11e3-8bee-97b6e1b60680.png)
 ## Platforms
 
 Kart is powered by [Atom Shell](https://github.com/atom/atom-shell), a cross

@@ -1,0 +1,20 @@
+{
+  "name": "Kart",
+  "version": "0.1.0",
+  "application": {
+    "name": "Kart"
+  },
+  "atomShellVersion": "0.12.2",
+  "devDependencies": {
+    "grunt-download-atom-shell": "0.7.0",
+    "fs-plus": "2.x",
+    "formidable": "~1.0.14",
+    "grunt": "~0.4.1",
+    "grunt-cli": "~0.1.9",
+    "grunt-shell": "~0.3.1",
+    "grunt-symbolic-link": "~0.3.1",
+    "grunt-contrib-copy": "~0.5",
+    "request": "~2.27.0",
+    "walkdir": "0.0.7"
+  }
+}

@@ -1,0 +1,11 @@
+atom-shell
+node_modules
+npm-debug.log
+app/coffee-cache
+app/data
+app/lesscache
+app/src/lesscache
+data-generator/avatars
+data-generator/data
+data-generator/commits
+.DS_Store

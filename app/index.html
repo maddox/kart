@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Kart</title>
+  <script>
+    window.onload = function() {
+      var currentWindow = require('remote').getCurrentWindow();
+      currentWindow.openDevTools();
+
+      try {
+
+        var path = require('path')
+
+        module.paths.push(path.join(__dirname, '..', '..', 'app'));
+        module.paths.push(path.join(__dirname, '..', '..', 'app', 'node_modules'));
+
+        require('coffee-script');
+        require('coffee-cache').setCacheDir(path.join(__dirname, 'coffee-cache'));
+        Object.defineProperty(require.extensions, '.coffee', {
+          writable: false,
+          value: require.extensions['.coffee']
+        });
+        require('app');
+      }
+      catch (error) {
+        currentWindow.openDevTools();
+        console.error(error.stack || error);
+      }
+   }
+  </script>
+</head>
+<body>
+</body>
+</html>

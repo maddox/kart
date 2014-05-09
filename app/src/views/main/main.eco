@@ -1,0 +1,14 @@
+<% for i in [0...@numberOfPages]: %>
+  <div class="page-container">
+    <div class="cards clearfix">
+      <% for game in @games[i*@perPage...(i+1)*@perPage]: %>
+      <div class="card">
+        <div class="overlay">
+          <img src="<%= game.imagePath()%>"></img>
+          <p><%= game.name() %></p>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

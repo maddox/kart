@@ -6,8 +6,6 @@ fsUtils = require '../lib/fs-utils'
 class GameConsole extends Spine.Model
   @configure "GameConsole", "prefix", "extensions"
 
-  console.log(window.localStorage.romsPath)
-
   basePath: ->
     window.localStorage.romsPath
 

@@ -1,3 +1,5 @@
+<p class="settings-button">Settings</p>
+
 <% for i in [0...@numberOfPages]: %>
   <div class="page-container">
     <div class="cards clearfix">

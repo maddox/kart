@@ -2,23 +2,25 @@ eco = require "eco"
 fs  = require "fs"
 
 Spine.Controller.prototype.view = (path, data) ->
-  template = fs.readFileSync __dirname + "/views/#{path}.eco", "utf-8"
-  eco.render template, data
+  # template = fs.readFileSync __dirname + "/views/#{path}.eco", "utf-8"
+  # eco.render template, data
 
-class App extends Spine.Controller
-  constructor: ->
-    super
-    @log('initialized')
+class App extends Spine.Stack
+  className: 'stack root'
 
-    @append(@main = new App.Main)
+  controllers:
+    main: App.Main
+    settings: App.Settings
 
+  default: 'main'
 
-    @delay @setup, 50
+  showSettings: ->
+    @settings.active()
 
-  setup: ->
-    @refreshElements()
+  showMain: ->
+    @main.active()
 
-  keydown: (e) ->
-    @main.keyboardNav(e)
+  # keydown: (e) ->
+  #   @current.keyboardNav(e)
 
 window.App = App

@@ -12,7 +12,10 @@ require './lib/hotkeys'
 Game = require './models/game'
 GameConsole = require './models/gameConsole'
 
-require './application'
+
+require './controllers/main'
+require './controllers/settings'
+
 
 App.Game = Game
 App.GameConsole = GameConsole
@@ -20,11 +23,16 @@ App.GameConsole = GameConsole
 $ =>
   $('body').addClass 'loaded'
 
-  require './controllers/main'
-  require './controllers/settings'
+  require './application'
+
 
   window.app = new App
     el: document.body
+
+  # app.showMain()
+
+  console.log(app.main.isActive())
+
 
   require './events'
 

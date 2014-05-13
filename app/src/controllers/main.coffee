@@ -12,14 +12,12 @@ class App.Main extends Spine.Controller
 
   events:
     'click .card': 'click'
+    'click .settings-button': 'showSettings'
     'mouseover .card': 'mouseover'
     'mouseleave .card': 'mouseleave'
 
   constructor: ->
     super
-
-    window.localStorage.setItem('romsPath', "/Users/jmaddox/Dropbox/Apps/RetroArch")
-    window.localStorage.setItem('retroArchPath', "/Applications/retroarch")
 
     paths = []
 
@@ -54,6 +52,8 @@ class App.Main extends Spine.Controller
   render: ->
     @html @view 'main/main', @
 
+  showSettings: ->
+    app.showSettings()
 
   launchGame: (game) ->
     command = "#{window.localStorage.retroArchPath}/bin/retroarch"

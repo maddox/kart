@@ -48,3 +48,10 @@ class App.Settings extends Spine.Controller
       @romsPath = path
       window.localStorage.setItem('romsPath', path)
       @update()
+
+  keyboardNav: (e) ->
+
+    switch e.keyCode
+      when KeyCodes.esc
+        app.showMain()
+        e.preventDefault()

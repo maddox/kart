@@ -1,0 +1,18 @@
+<p class="settings-button btn">Back to Roms</p>
+
+<div class="settings">
+  <h1>Settings</h1>
+
+  <div class="field clearfix">
+    <p class="label">Retroarch location</p>
+    <p id="retroarch_path" class="well"></p>
+    <button id="retroarch_path_button">Change...</button>
+  </div>
+
+  <div class="field clearfix">
+    <p class="label">Roms location</p>
+    <p id="roms_path" class="well"></p>
+    <button id="roms_path_button">Change...</button>
+  </div>
+
+</div>

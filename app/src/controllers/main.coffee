@@ -4,7 +4,7 @@ $      = Spine.$
 
 fsUtils = require '../lib/fs-utils'
 
-class App.Main extends Spine.Controller
+class Main extends Spine.Controller
   className: 'app-main'
 
   elements:
@@ -12,17 +12,32 @@ class App.Main extends Spine.Controller
 
   events:
     'click .card': 'click'
+    'click .settings-button': 'showSettings'
     'mouseover .card': 'mouseover'
     'mouseleave .card': 'mouseleave'
 
   constructor: ->
     super
 
-    window.localStorage.setItem('romsPath', "/Users/jmaddox/Dropbox/Apps/RetroArch")
-    window.localStorage.setItem('retroArchPath', "/Applications/retroarch")
+    @settings = new App.Settings
 
-    paths = []
+    @games = []
 
+    @cardMatrix = []
+    @currentlySelectedCard = null
+
+    @rows = 3
+    @perRow = 4
+    @perPage = @rows * @perRow
+
+    @numberOfPages = 0
+    @page = 0
+    @x = -1
+    @y = -1
+
+    @update()
+
+  build: ->
     gameConsoles = []
     gameConsoles.push new App.GameConsole(prefix: "nes", extensions: ["nes", "zip"])
     gameConsoles.push new App.GameConsole(prefix: "snes", extensions: ["smc", "zip"])
@@ -35,30 +50,22 @@ class App.Main extends Spine.Controller
 
     @games = _.flatten @games
 
-
-    @cardMatrix = []
-    @currentlySelectedCard = null
-
-    @rows = 3
-    @perRow = 4
-    @perPage = @rows * @perRow
     @numberOfPages = parseInt(@games.length / @perPage)
     @numberOfPages++ if @games.length % @perPage
-    console.log(@numberOfPages)
-
-    @page = 0
-    @x = -1
-    @y = -1
-
-    @render()
 
   render: ->
     @html @view 'main/main', @
 
+  update: ->
+    @build()
+    @render();
+
+  showSettings: ->
+    app.showSettings()
 
   launchGame: (game) ->
-    command = "#{window.localStorage.retroArchPath}/bin/retroarch"
-    options = ["--config", "#{window.localStorage.retroArchPath}/configs/all/retroarch.cfg", "--appendconfig", "#{window.localStorage.retroArchPath}/configs/#{game.gameConsole()}/retroarch.cfg", game.path]
+    command = "#{@settings.retroarchPath()}/bin/retroarch"
+    options = ["--config", "#{@settings.retroarchPath()}/configs/all/retroarch.cfg", "--appendconfig", "#{@settings.retroarchPath()}/configs/#{game.gameConsole()}/retroarch.cfg", game.path]
 
     {spawn} = require 'child_process'
     ls = spawn command, options
@@ -69,8 +76,6 @@ class App.Main extends Spine.Controller
 
   click: (e) ->
     e.preventDefault()
-    # $('.cards .card').keynav();
-    #
     card = $(e.currentTarget)
 
     game = @games[card.index()]
@@ -185,3 +190,5 @@ class App.Main extends Spine.Controller
         e.preventDefault()
       when KeyCodes.esc
         e.preventDefault()
+
+module.exports = Main

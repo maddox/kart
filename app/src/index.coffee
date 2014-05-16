@@ -9,22 +9,16 @@ window.Spine = Spine
 
 require './lib/hotkeys'
 
-Game = require './models/game'
-GameConsole = require './models/gameConsole'
+window.App = require './application'
 
-require './application'
-
-App.Game = Game
-App.GameConsole = GameConsole
+App.Game = require './models/game'
+App.GameConsole = require './models/gameConsole'
+App.Settings = require './models/settings'
 
 $ =>
   $('body').addClass 'loaded'
-
-  require './controllers/main'
 
   window.app = new App
     el: document.body
 
   require './events'
-
-  # Spine.Route.setup()

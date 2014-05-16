@@ -3,6 +3,8 @@
 @import 'reset';
 @import 'main';
 @import 'cards';
+@import 'settings';
+@import 'buttons';
 
 
 body {
@@ -15,6 +17,7 @@ body {
   right:0;
   bottom:0;
   background: url(images/bg-texture.png);
+  font-family: arial;
 }
 
 strong {
@@ -30,4 +33,12 @@ strong {
     content:"";
     display:table;
     clear:both;
+}
+
+.stack > div {
+  display:none;
+
+  &.active {
+    display:block;
+  }
 }

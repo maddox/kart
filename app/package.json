@@ -11,7 +11,8 @@
     "coffee-cache": "~0.2.0",
     "less": "git://github.com/nathansobo/less.js.git",
     "underscore": "1.4.4",
-    "less-cache": "~0.12"
+    "less-cache": "~0.12",
+    "font-awesome": "4.0.3"
   },
   "devDependencies": {
   }

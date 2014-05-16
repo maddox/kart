@@ -29,7 +29,7 @@ class App extends Spine.Stack
   showMain: ->
     @main.active()
 
-  # keydown: (e) ->
-  #   @current.keyboardNav(e)
+  keydown: (e) ->
+    @activeController().keyboardNav(e)
 
 module.exports = App

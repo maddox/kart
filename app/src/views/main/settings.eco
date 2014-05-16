@@ -4,13 +4,13 @@
 
   <div class="field clearfix">
     <p class="label">Retroarch location</p>
-    <p id="retroarch_path" class="well"><%= @retroarchPath %></p>
+    <p id="retroarch_path" class="well"></p>
     <button id="retroarch_path_button">Change...</button>
   </div>
 
   <div class="field clearfix">
     <p class="label">Roms location</p>
-    <p id="roms_path" class="well"><%= @romsPath %></p>
+    <p id="roms_path" class="well"></p>
     <button id="roms_path_button">Change...</button>
   </div>
 

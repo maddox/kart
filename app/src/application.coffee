@@ -17,6 +17,12 @@ class App extends Spine.Stack
 
   default: 'main'
 
+  activeController: ->
+    for controller in @manager.controllers
+      if controller.isActive()
+        return controller
+        break
+
   showSettings: ->
     @settings.active()
 

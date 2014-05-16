@@ -116,7 +116,6 @@
 				setCurrent(x+1,y);
 				e.preventDefault();
 			} else if (e.keyCode == 13) {
-        console.log('selecteddddd')
 				e.preventDefault();
 			}
 		});

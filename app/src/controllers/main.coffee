@@ -77,8 +77,6 @@ class Main extends Spine.Controller
 
   click: (e) ->
     e.preventDefault()
-    # $('.cards .card').keynav();
-    #
     card = $(e.currentTarget)
 
     game = @games[card.index()]

@@ -27,6 +27,7 @@ class App extends Spine.Stack
     @settings.active()
 
   showMain: ->
+    @main.update()
     @main.active()
 
   keydown: (e) ->

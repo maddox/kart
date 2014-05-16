@@ -19,6 +19,8 @@ class Main extends Spine.Controller
   constructor: ->
     super
 
+    @settings = new App.Settings
+
     @games = []
 
     @cardMatrix = []

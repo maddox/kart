@@ -4,7 +4,7 @@ $      = Spine.$
 
 fsUtils = require '../lib/fs-utils'
 
-class App.Main extends Spine.Controller
+class Main extends Spine.Controller
   className: 'app-main'
 
   elements:
@@ -184,3 +184,5 @@ class App.Main extends Spine.Controller
         e.preventDefault()
       when KeyCodes.esc
         e.preventDefault()
+
+module.exports = Main

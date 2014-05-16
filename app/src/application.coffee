@@ -1,16 +1,19 @@
 eco = require "eco"
 fs  = require "fs"
 
+Main = require './controllers/main'
+Settings = require './controllers/settings'
+
 Spine.Controller.prototype.view = (path, data) ->
-  # template = fs.readFileSync __dirname + "/views/#{path}.eco", "utf-8"
-  # eco.render template, data
+  template = fs.readFileSync __dirname + "/views/#{path}.eco", "utf-8"
+  eco.render template, data
 
 class App extends Spine.Stack
   className: 'stack root'
 
   controllers:
-    main: App.Main
-    settings: App.Settings
+    main: Main
+    settings: Settings
 
   default: 'main'
 
@@ -23,4 +26,4 @@ class App extends Spine.Stack
   # keydown: (e) ->
   #   @current.keyboardNav(e)
 
-window.App = App
+module.exports = App

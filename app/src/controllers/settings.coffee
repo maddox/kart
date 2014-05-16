@@ -5,7 +5,7 @@ $      = Spine.$
 fsUtils = require '../lib/fs-utils'
 dialog = require('remote').require('dialog')
 
-class App.Settings extends Spine.Controller
+class Settings extends Spine.Controller
   className: 'app-settings'
 
   elements:
@@ -15,6 +15,7 @@ class App.Settings extends Spine.Controller
   events:
     'click #retroarch_path_button': 'browseRetroarchPath'
     'click #roms_path_button': 'browseRomsPath'
+    'click .settings-button': 'showMain'
 
   constructor: ->
     super
@@ -28,6 +29,10 @@ class App.Settings extends Spine.Controller
     @html @view 'main/settings', @
 
     @delay @update, 50
+
+  showMain: ->
+
+    app.showMain()
 
   update: ->
     @retroarchPathInput.attr('placeholder', '/Applications/retroarch')
@@ -55,3 +60,5 @@ class App.Settings extends Spine.Controller
       when KeyCodes.esc
         app.showMain()
         e.preventDefault()
+
+module.exports = Settings

@@ -40,6 +40,140 @@ Kart is developed using these technologies.
 * Spine JS
 * Node.js
 
+## How To Use
+
+Kart is very simple right now. To use it, click on the settings button and set
+your paths.
+
+### Settings
+
+There are only 2 settings for Kart right now. That's all it needs!
+
+* **RetroArch Path** - The path to your RetroArch bundle. The root directory
+where all of your RetroArch things are.
+* **Roms Path** - The path to your roms.
+
+### Convention over Configuration
+
+Kart follows a model of Convention over Configuration. Instead of making you
+specify a million different things or keeping a library of metadata, Kart makes
+certain assumptions. This means as long as you follow some set guidelines, it's
+very easy to set up.
+
+For example, the name of a game is taken from it's rom's filename. The art for
+the game should have the same name as the rom. By using this convention, its easy
+to load in all of your roms without a complicated scanning process.
+
+#### Rom Directories
+
+Your roms should be organized into directories based on the console they are for.
+You should have a single rom directory that contains them. Your rom directory
+hierarchy should look like this:
+
+```
+/roms
+  /gb
+  /gba
+  /megadrive
+  /nes
+  /snes
+    /Super Mario World.smc
+```
+
+Your rom names should be named exactly how you want to them appear in Kart.
+
+#### Art Directories
+
+Art for your roms should be inside a directory named `images` within each
+console's directory. Art for each rom should have the exact same file name as
+the rom it's for. The art should also be a `PNG`.
+
+```
+/roms
+  /snes
+    /images
+      /Super Mario World.png
+```
+
+Simply add this directory and add the art for all of the roms you want to show
+up.
+
+Kart uses Steam styled art. You can find art for your games all over the
+internet, but the easiest place to find it is http://steambanners.booru.org.
+
+
+#### Supported Consoles
+
+Right now, kart only supports these consoles (directory names are in
+  parenthesis):
+
+* Super Nintendo Entertainment System (/snes)
+* Nintendo Entertainment System /(nes)
+* GameBoy and GameBoy Color (/gb)
+* GameBoy Advance (/gba)
+* Sega Genesis (/megadrive)
+
+#### Key Navigation
+
+Kart supports browsing by the keyboard.
+
+The keys `up`, `down`, `left`, `rigth`, `enter`, `esc` all do exactly what you'd
+think they do.
+
+For best results, use a keyboard mapper to map your joystick/controller to these
+keys so you can navigate Kart with your controller.
+
+#### RetroArch Configuration
+
+In the future, Kart will provide it's own bundled version of RetroArch or the
+ability to download a pre-configured one. But for now you need to use your own.
+
+There are a few assumptions made about your RetroArch setup.
+
+First, every console needs to have it's own config. Inside that config should
+have a setting for the libretro emulator core you want to use.
+
+For example for :
+
+```
+libretro_path = "/Applications/retroarch/libretro/libretro-snes9x-next.dylib"
+```
+
+The `libretro_path` is the minimum required setting, but you can add any extra
+settings that you want. This may be different key settings, filters, or whatever.
+
+Your config hierarchy should look like this:
+
+```
+/retroarch
+  /config
+    /gb
+    /gba
+    /megadrive
+    /nes
+    /snes
+      /retroarch.cfg
+```
+
+Again, in the future this will be simpler.
+
+
+## Roadmap
+
+Kart is in it's early days. It's extremely simple right now, but there are lots
+of plans.
+
+* Browse by Console
+* Browse Recently Played Games
+* Set and Browse Favorites
+* Bundled RetroArch distribution
+* Better full screen support
+* Better first run experience
+* Everything better, lulz
+
+Hopefully, by the time Kart is more mature, downloading it and setting it up
+will be easy as pie.
+
 
 ## Development
 

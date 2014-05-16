@@ -23,6 +23,7 @@ class Settings extends Spine.Controller
     @romsPath = window.localStorage.romsPath
     @retroarchPath = window.localStorage.retroArchPath
 
+    @build()
     @render()
 
   render: ->
@@ -34,25 +35,23 @@ class Settings extends Spine.Controller
 
     app.showMain()
 
-  update: ->
-    @retroarchPathInput.attr('placeholder', '/Applications/retroarch')
-    @retroarchPathInput.html(@retroarchPath)
-    @romsPathInput.attr('placeholder', '/Users/miyamoto/Roms')
-    @romsPathInput.html(@romsPath)
+  build: ->
+    @retroarchPathInput.html(@settings.retroarchPath())
+    @romsPathInput.html(@settings.romsPath())
 
   browseRetroarchPath: (e) ->
     path = dialog.showOpenDialog({ title: 'Retroarch Path', properties: [ 'openDirectory' ]})
     if path
       @retroarchPath = path
       window.localStorage.setItem('retroArchPath', path)
-      @update()
+      @build()
 
   browseRomsPath: (e) ->
     path = dialog.showOpenDialog({ title: 'Roms Path', properties: [ 'openDirectory' ]})
     if path
       @romsPath = path
       window.localStorage.setItem('romsPath', path)
-      @update()
+      @build()
 
   keyboardNav: (e) ->
 

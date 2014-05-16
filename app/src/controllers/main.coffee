@@ -19,8 +19,26 @@ class Main extends Spine.Controller
   constructor: ->
     super
 
-    paths = []
+    @settings = new App.Settings
+    @settings.clear()
 
+    @games = []
+
+    @cardMatrix = []
+    @currentlySelectedCard = null
+
+    @rows = 3
+    @perRow = 4
+    @perPage = @rows * @perRow
+
+    @numberOfPages = 0
+    @page = 0
+    @x = -1
+    @y = -1
+
+    @update()
+
+  build: ->
     gameConsoles = []
     gameConsoles.push new App.GameConsole(prefix: "nes", extensions: ["nes", "zip"])
     gameConsoles.push new App.GameConsole(prefix: "snes", extensions: ["smc", "zip"])
@@ -33,24 +51,15 @@ class Main extends Spine.Controller
 
     @games = _.flatten @games
 
-
-    @cardMatrix = []
-    @currentlySelectedCard = null
-
-    @rows = 3
-    @perRow = 4
-    @perPage = @rows * @perRow
     @numberOfPages = parseInt(@games.length / @perPage)
     @numberOfPages++ if @games.length % @perPage
 
-    @page = 0
-    @x = -1
-    @y = -1
-
-    @render()
-
   render: ->
     @html @view 'main/main', @
+
+  update: ->
+    @build()
+    @render();
 
   showSettings: ->
     app.showSettings()

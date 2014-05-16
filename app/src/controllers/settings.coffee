@@ -20,8 +20,7 @@ class Settings extends Spine.Controller
   constructor: ->
     super
 
-    @romsPath = window.localStorage.romsPath
-    @retroarchPath = window.localStorage.retroArchPath
+    @settings = new App.Settings
 
     @build()
     @render()
@@ -29,10 +28,7 @@ class Settings extends Spine.Controller
   render: ->
     @html @view 'main/settings', @
 
-    @update()
-
   showMain: ->
-
     app.showMain()
 
   build: ->
@@ -42,15 +38,13 @@ class Settings extends Spine.Controller
   browseRetroarchPath: (e) ->
     path = dialog.showOpenDialog({ title: 'Retroarch Path', properties: [ 'openDirectory' ]})
     if path
-      @retroarchPath = path
-      window.localStorage.setItem('retroArchPath', path)
+      @settings.setRetroarchPath(path)
       @build()
 
   browseRomsPath: (e) ->
     path = dialog.showOpenDialog({ title: 'Roms Path', properties: [ 'openDirectory' ]})
     if path
-      @romsPath = path
-      window.localStorage.setItem('romsPath', path)
+      @settings.setRomsPath(path)
       @build()
 
   keyboardNav: (e) ->

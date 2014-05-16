@@ -6,8 +6,12 @@ fsUtils = require '../lib/fs-utils'
 class GameConsole extends Spine.Model
   @configure "GameConsole", "prefix", "extensions"
 
+  constructor: ->
+    super
+    @settings = new App.Settings
+
   basePath: ->
-    window.localStorage.romsPath
+    @settings.romsPath()
 
   romPaths: ->
     fsUtils.listSync("#{@basePath()}/#{@prefix}", @extensions)

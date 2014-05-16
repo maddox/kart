@@ -65,8 +65,8 @@ class Main extends Spine.Controller
     app.showSettings()
 
   launchGame: (game) ->
-    command = "#{window.localStorage.retroArchPath}/bin/retroarch"
-    options = ["--config", "#{window.localStorage.retroArchPath}/configs/all/retroarch.cfg", "--appendconfig", "#{window.localStorage.retroArchPath}/configs/#{game.gameConsole()}/retroarch.cfg", game.path]
+    command = "#{@settings.retroarchPath()}/bin/retroarch"
+    options = ["--config", "#{@settings.retroarchPath()}/configs/all/retroarch.cfg", "--appendconfig", "#{@settings.retroarchPath()}/configs/#{game.gameConsole()}/retroarch.cfg", game.path]
 
     {spawn} = require 'child_process'
     ls = spawn command, options

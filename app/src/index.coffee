@@ -20,11 +20,4 @@ $ =>
   window.app = new App
     el: document.body
 
-  # app.showMain()
-
-  #console.log(app.main.isActive())
-
-
   require './events'
-
-  # Spine.Route.setup()

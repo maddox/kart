@@ -28,7 +28,7 @@ class Settings extends Spine.Controller
   render: ->
     @html @view 'main/settings', @
 
-    @delay @update, 50
+    @update()
 
   showMain: ->
 

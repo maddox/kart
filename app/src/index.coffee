@@ -13,6 +13,7 @@ window.App = require './application'
 
 App.Game = require './models/game'
 App.GameConsole = require './models/gameConsole'
+App.Settings = require './models/settings'
 
 $ =>
   $('body').addClass 'loaded'

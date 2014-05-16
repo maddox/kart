@@ -1,4 +1,4 @@
-<p class="settings-button">Settings</p>
+<p class="settings-button btn">Settings</p>
 
 <% for i in [0...@numberOfPages]: %>
   <div class="page-container">

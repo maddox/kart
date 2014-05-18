@@ -19,10 +19,6 @@ class Games extends Cards
 
     @games = @gameConsole.games() if @gameConsole
 
-  render: ->
-    @html @view 'main/games', @
-    @setSelected(0,0);
-
   launchGame: (game) ->
     command = "#{@settings.retroarchPath()}/bin/retroarch"
     options = ["--config", "#{@settings.retroarchPath()}/configs/all/retroarch.cfg", "--appendconfig", "#{@settings.retroarchPath()}/configs/#{game.gameConsole()}/retroarch.cfg", game.path]

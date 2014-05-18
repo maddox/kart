@@ -28,10 +28,6 @@ class Home extends Cards
     _.filter @gameConsoles, (gameConsole) ->
       gameConsole.imageExists()
 
-  render: ->
-    @html @view 'main/home', @
-    @setSelected(0,0);
-
   showSettings: ->
     app.showSettings()
 

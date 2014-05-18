@@ -22,6 +22,7 @@ class Games extends Spine.Controller
     @settings = new App.Settings
 
     @games = []
+    @gamesConsole = null
 
     @cardMatrix = []
     @currentlySelectedCard = null
@@ -35,20 +36,8 @@ class Games extends Spine.Controller
     @x = -1
     @y = -1
 
-    @update()
-
   build: ->
-    gameConsoles = []
-    gameConsoles.push new App.GameConsole(prefix: "nes", extensions: ["nes", "zip"])
-    gameConsoles.push new App.GameConsole(prefix: "snes", extensions: ["smc", "zip"])
-    gameConsoles.push new App.GameConsole(prefix: "gb", extensions: ["gb", "gbc", "zip"])
-    gameConsoles.push new App.GameConsole(prefix: "gba", extensions: ["gba", "zip"])
-    gameConsoles.push new App.GameConsole(prefix: "megadrive", extensions: ["bin", "zip"])
-
-    @games = _.map gameConsoles, (gameConsole) ->
-      gameConsole.games()
-
-    @games = _.flatten @games
+    @games = @gameConsole.games()
 
     @numberOfPages = parseInt(@games.length / @perPage)
     @numberOfPages++ if @games.length % @perPage
@@ -189,6 +178,7 @@ class Games extends Spine.Controller
         @launchGame(@games[$(@currentlySelectedCard).index()  + (@page*12) ])
         e.preventDefault()
       when KeyCodes.esc
+        app.showHome()
         e.preventDefault()
 
 module.exports = Games

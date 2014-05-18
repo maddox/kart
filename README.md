@@ -64,6 +64,17 @@ For example, the name of a game is taken from it's rom's filename. The art for
 the game should have the same name as the rom. By using this convention, its easy
 to load in all of your roms without a complicated scanning process.
 
+#### tl;dr
+
+Configuring Kart is actually pretty easy, here's the gist:
+
+* set up your console and rom directories right
+* name your roms the titles you want them to appear in Kart
+* add an `/images` directory for each console with `PNG` art that match the rom
+filenames
+* add an `image.png` image for each console
+* set the paths for your roms and RetroArch bundle
+
 #### Rom Directories
 
 Your roms should be organized into directories based on the console they are for.

@@ -93,7 +93,7 @@ hierarchy should look like this:
 
 Your rom names should be named exactly how you want to them appear in Kart.
 
-#### Art Directories
+##### Rom Art Directories
 
 Art for your roms should be inside a directory named `images` within each
 console's directory. Art for each rom should have the exact same file name as
@@ -123,6 +123,11 @@ Right now, kart only supports these consoles (directory names are in
 * GameBoy and GameBoy Color (/gb)
 * GameBoy Advance (/gba)
 * Sega Genesis (/megadrive)
+
+##### Console Art
+
+Add an `image.png` image to a console's directory to set it's art.
+
 
 #### Key Navigation
 

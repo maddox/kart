@@ -1,6 +1,6 @@
 <p class="settings-button btn">Settings</p>
 
-<% for i in [0...@numberOfPages]: %>
+<% for i in [0...@numberOfPages()]: %>
   <div class="page-container">
     <div class="cards clearfix">
       <% for gameConsole in @gameConsoles[i*@perPage...(i+1)*@perPage]: %>

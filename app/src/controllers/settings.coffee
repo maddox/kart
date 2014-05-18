@@ -15,7 +15,6 @@ class Settings extends Spine.Controller
   events:
     'click #retroarch_path_button': 'browseRetroarchPath'
     'click #roms_path_button': 'browseRomsPath'
-    'click .settings-button': 'showMain'
 
   constructor: ->
     super
@@ -27,9 +26,6 @@ class Settings extends Spine.Controller
 
   render: ->
     @html @view 'main/settings', @
-
-  showMain: ->
-    app.showMain()
 
   build: ->
     @retroarchPathInput.html(@settings.retroarchPath())
@@ -50,8 +46,11 @@ class Settings extends Spine.Controller
   keyboardNav: (e) ->
 
     switch e.keyCode
+      when KeyCodes.backspace
+        app.showHome()
+        e.preventDefault()
       when KeyCodes.esc
-        app.showMain()
+        app.showHome()
         e.preventDefault()
 
 module.exports = Settings

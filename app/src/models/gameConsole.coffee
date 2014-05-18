@@ -13,8 +13,20 @@ class GameConsole extends Spine.Model
   basePath: ->
     @settings.romsPath()
 
+  path: ->
+    "#{@basePath()}/#{@prefix}"
+
+  name: ->
+    @prefix
+
   romPaths: ->
-    fsUtils.listSync("#{@basePath()}/#{@prefix}", @extensions)
+    fsUtils.listSync(@path(), @extensions)
+
+  imagePath: ->
+    "#{@path()}/image.png"
+
+  imageExists: ->
+    fsUtils.exists(@imagePath())
 
   games: ->
     games = _.map @romPaths(), (path) ->

@@ -1,7 +1,8 @@
 eco = require "eco"
 fs  = require "fs"
 
-Main = require './controllers/main'
+Home = require './controllers/home'
+Games = require './controllers/games'
 Settings = require './controllers/settings'
 
 Spine.Controller.prototype.view = (path, data) ->
@@ -11,11 +12,15 @@ Spine.Controller.prototype.view = (path, data) ->
 class App extends Spine.Stack
   className: 'stack root'
 
+  events:
+    'click .settings-button': 'toggleSettings'
+
   controllers:
-    main: Main
+    home: Home
+    games: Games
     settings: Settings
 
-  default: 'main'
+  default: 'home'
 
   activeController: ->
     for controller in @manager.controllers
@@ -23,12 +28,21 @@ class App extends Spine.Stack
         return controller
         break
 
-  showSettings: ->
-    @settings.active()
+  showHome: ->
+    console.log('showing home')
 
-  showMain: ->
-    @main.update()
-    @main.active()
+    @home.active()
+
+  toggleSettings: ->
+    if @settings.isActive()
+      @home.active()
+    else
+      @settings.active()
+
+  showGames: (gameConsole) ->
+    @games.gameConsole = gameConsole
+    @games.update()
+    @games.active()
 
   keydown: (e) ->
     @activeController().keyboardNav(e)

@@ -64,6 +64,17 @@ For example, the name of a game is taken from it's rom's filename. The art for
 the game should have the same name as the rom. By using this convention, its easy
 to load in all of your roms without a complicated scanning process.
 
+#### tl;dr
+
+Configuring Kart is actually pretty easy, here's the gist:
+
+* set up your console and rom directories right
+* name your roms the titles you want them to appear in Kart
+* add an `/images` directory for each console with `PNG` art that match the rom
+filenames
+* add an `image.png` image for each console
+* set the paths for your roms and RetroArch bundle
+
 #### Rom Directories
 
 Your roms should be organized into directories based on the console they are for.
@@ -82,7 +93,7 @@ hierarchy should look like this:
 
 Your rom names should be named exactly how you want to them appear in Kart.
 
-#### Art Directories
+##### Rom Art Directories
 
 Art for your roms should be inside a directory named `images` within each
 console's directory. Art for each rom should have the exact same file name as
@@ -113,12 +124,20 @@ Right now, kart only supports these consoles (directory names are in
 * GameBoy Advance (/gba)
 * Sega Genesis (/megadrive)
 
+##### Console Art
+
+Add an `image.png` image to a console's directory to set it's art.
+
+
 #### Key Navigation
 
 Kart supports browsing by the keyboard.
 
 The keys `up`, `down`, `left`, `rigth`, `enter`, `esc` all do exactly what you'd
 think they do.
+
+In addition, `backspace` is an alias for `esc` to allow you to map controls
+better.
 
 For best results, use a keyboard mapper to map your joystick/controller to these
 keys so you can navigate Kart with your controller.
@@ -163,7 +182,7 @@ Again, in the future this will be simpler.
 Kart is in it's early days. It's extremely simple right now, but there are lots
 of plans.
 
-* Browse by Console
+* ~~~Browse by Console~~~ :white_check_mark: 
 * Browse Recently Played Games
 * Set and Browse Favorites
 * Bundled RetroArch distribution

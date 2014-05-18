@@ -1,0 +1,9 @@
+<% for i in [0...@numberOfPages()]: %>
+  <div class="page-container">
+    <div class="cards clearfix">
+      <% for j in [i*@perPage...(i*@perPage + (Math.min((i+1)*@perPage, @numberOfItems()-(i*@perPage))))]: %>
+      <%- @cardFor(j) %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

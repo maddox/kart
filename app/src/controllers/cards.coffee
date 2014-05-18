@@ -2,84 +2,48 @@ _ = require 'underscore'
 Spine._ = require 'underscore'
 $      = Spine.$
 
-fsUtils = require '../lib/fs-utils'
-
-class Main extends Spine.Controller
-  className: 'app-main'
+class Cards extends Spine.Controller
+  className: 'app-cards'
 
   elements:
     '.cards .card': 'cards'
 
   events:
     'click .card': 'click'
-    'click .settings-button': 'showSettings'
     'mouseover .card': 'mouseover'
     'mouseleave .card': 'mouseleave'
 
   constructor: ->
     super
 
-    @settings = new App.Settings
-
-    @games = []
-
-    @cardMatrix = []
     @currentlySelectedCard = null
 
     @rows = 3
     @perRow = 4
     @perPage = @rows * @perRow
 
-    @numberOfPages = 0
+    @update()
+
+  build: ->
     @page = 0
     @x = -1
     @y = -1
 
-    @update()
-
-  build: ->
-    gameConsoles = []
-    gameConsoles.push new App.GameConsole(prefix: "nes", extensions: ["nes", "zip"])
-    gameConsoles.push new App.GameConsole(prefix: "snes", extensions: ["smc", "zip"])
-    gameConsoles.push new App.GameConsole(prefix: "gb", extensions: ["gb", "gbc", "zip"])
-    gameConsoles.push new App.GameConsole(prefix: "gba", extensions: ["gba", "zip"])
-    gameConsoles.push new App.GameConsole(prefix: "megadrive", extensions: ["bin", "zip"])
-
-    @games = _.map gameConsoles, (gameConsole) ->
-      gameConsole.games()
-
-    @games = _.flatten @games
-
-    @numberOfPages = parseInt(@games.length / @perPage)
-    @numberOfPages++ if @games.length % @perPage
-
   render: ->
-    @html @view 'main/main', @
+    @html @view 'main/cards', @
+    @setSelected(0,0);
 
   update: ->
     @build()
     @render();
 
-  showSettings: ->
-    app.showSettings()
+  numberOfPages: ->
+    number = parseInt(@numberOfItems() / @perPage)
+    number++ if @numberOfItems() % @perPage
+    number
 
-  launchGame: (game) ->
-    command = "#{@settings.retroarchPath()}/bin/retroarch"
-    options = ["--config", "#{@settings.retroarchPath()}/configs/all/retroarch.cfg", "--appendconfig", "#{@settings.retroarchPath()}/configs/#{game.gameConsole()}/retroarch.cfg", game.path]
-
-    {spawn} = require 'child_process'
-    ls = spawn command, options
-    # receive all output and process
-    ls.stdout.on 'data', (data) -> console.log data.toString().trim()
-    # receive error messages and process
-    ls.stderr.on 'data', (data) -> console.log data.toString().trim()
-
-  click: (e) ->
-    e.preventDefault()
-    card = $(e.currentTarget)
-
-    game = @games[card.index()]
-    @launchGame(game)
+  numberOfItems: ->
+    1
 
   selectCard: (card) ->
     @currentlySelectedCard.removeClass('selected') if @currentlySelectedCard
@@ -95,7 +59,6 @@ class Main extends Spine.Controller
       direction = 'right'
     else if j < @y
       direction = 'left'
-
 
     # max up at the top
     if i < 0
@@ -113,11 +76,10 @@ class Main extends Spine.Controller
       j = @perRow-1
       @page -= 1
 
-
     # advancing a page to the right
     if j >= @perRow
       # max right to the far right on the last page
-      if j >= @page+1 >= @numberOfPages
+      if j >= @page+1 >= @numberOfPages()
         j = 3
       # advance a page
       else
@@ -129,7 +91,7 @@ class Main extends Spine.Controller
         adjustedI = @page*@rows + i
         index = (@perRow * adjustedI + j)
         # no items on that row, pop to the top
-        if index >= @games.length
+        if index >= @numberOfItems()
           i = 0
 
     # adjust i for what page it's on
@@ -138,7 +100,7 @@ class Main extends Spine.Controller
     adjustedI = @page*@rows + i
     index = (@perRow * adjustedI + j)
 
-    if index < @games.length
+    if index < @numberOfItems()
       # set selected items
       @currentlySelectedCard.removeClass('selected') if @currentlySelectedCard
       @currentlySelectedCard = $(@cards[index])
@@ -156,11 +118,27 @@ class Main extends Spine.Controller
 
         $.scrollTo(scrollOption, 150, {easing:'swing'})
 
-
       # save these for later
       @x = i;
       @y = j;
 
+  didPickCardAt: (index) ->
+    console.log(index)
+
+  pickCardAtIndex: (card) ->
+    card = $(card)
+    index = card.index() + (@page*@perPage)
+
+    @didPickCardAt(index)
+
+  cardFor: (index) ->
+    console.log("overide this to render a card")
+    data = {"imagePath": "", "title": "Check Console"}
+    @view 'main/_card', data
+
+  click: (e) ->
+    @pickCardAtIndex(e.currentTarget)
+    e.preventDefault()
 
   mouseover: (e) ->
     card = $(e.currentTarget)
@@ -186,9 +164,11 @@ class Main extends Spine.Controller
         @setSelected(@x,@y+1);
         e.preventDefault()
       when KeyCodes.enter
-        @launchGame(@games[$(@currentlySelectedCard).index()  + (@page*12) ])
+        @pickCardAtIndex(@currentlySelectedCard)
+        e.preventDefault()
+      when KeyCodes.backspace
         e.preventDefault()
       when KeyCodes.esc
         e.preventDefault()
 
-module.exports = Main
+module.exports = Cards

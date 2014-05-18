@@ -182,7 +182,7 @@ Again, in the future this will be simpler.
 Kart is in it's early days. It's extremely simple right now, but there are lots
 of plans.
 
-* Browse by Console
+* ~~~Browse by Console~~~ :white_check_mark: 
 * Browse Recently Played Games
 * Set and Browse Favorites
 * Bundled RetroArch distribution

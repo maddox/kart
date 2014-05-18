@@ -36,6 +36,11 @@ class Games extends Cards
   didPickCardAt: (index) ->
     @launchGame(@games[index])
 
+  cardFor: (index) ->
+    game = @games[index]
+    data = {"imagePath": game.imagePath(), "title": game.name()}
+    @view 'main/_card', data
+
   keyboardNav: (e) ->
     super
 

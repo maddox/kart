@@ -120,6 +120,9 @@ Kart supports browsing by the keyboard.
 The keys `up`, `down`, `left`, `rigth`, `enter`, `esc` all do exactly what you'd
 think they do.
 
+In addition, `backspace` is an alias for `esc` to allow you to map controls
+better.
+
 For best results, use a keyboard mapper to map your joystick/controller to these
 keys so you can navigate Kart with your controller.
 

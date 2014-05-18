@@ -131,6 +131,11 @@ class Cards extends Spine.Controller
 
     @didPickCardAt(index)
 
+  cardFor: (index) ->
+    console.log("overide this to render a card")
+    data = {"imagePath": "", "title": "Check Console"}
+    @view 'main/_card', data
+
   click: (e) ->
     @pickCardAtIndex(e.currentTarget)
     e.preventDefault()

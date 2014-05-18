@@ -186,7 +186,7 @@ class Main extends Spine.Controller
         @setSelected(@x,@y+1);
         e.preventDefault()
       when KeyCodes.enter
-        @launchGame(@games[$(@currentlySelectedCard).index()])
+        @launchGame(@games[$(@currentlySelectedCard).index()  + (@page*12) ])
         e.preventDefault()
       when KeyCodes.esc
         e.preventDefault()

@@ -53,6 +53,7 @@ class Home extends Spine.Controller
 
   render: ->
     @html @view 'main/home', @
+    @setSelected(0,0);
 
   update: ->
     @build()

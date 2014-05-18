@@ -44,6 +44,7 @@ class Games extends Spine.Controller
 
   render: ->
     @html @view 'main/games', @
+    @setSelected(0,0);
 
   update: ->
     @build()

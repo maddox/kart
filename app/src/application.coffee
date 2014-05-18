@@ -1,6 +1,7 @@
 eco = require "eco"
 fs  = require "fs"
 
+Home = require './controllers/home'
 Games = require './controllers/games'
 Settings = require './controllers/settings'
 
@@ -12,10 +13,11 @@ class App extends Spine.Stack
   className: 'stack root'
 
   controllers:
+    home: Home
     games: Games
     settings: Settings
 
-  default: 'games'
+  default: 'home'
 
   activeController: ->
     for controller in @manager.controllers
@@ -23,10 +25,14 @@ class App extends Spine.Stack
         return controller
         break
 
+  showHome: ->
+    @home.active()
+
   showSettings: ->
     @settings.active()
 
-  showGames: ->
+  showGames: (gameConsole) ->
+    @games.gameConsole = gameConsole
     @games.update()
     @games.active()
 

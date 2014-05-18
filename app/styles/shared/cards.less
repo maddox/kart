@@ -32,7 +32,7 @@ body{
       transition: 0.05s;
 
       p{
-        display: block;
+        position: relative;
         opacity: 0;
         margin: 0;
         padding: 8px 0 0 0;
@@ -41,7 +41,16 @@ body{
         font-size: 14px;
         color: #313131;
         transition: opacity 0.05s;
-        max-height: 10px;
+        overflow: hidden;
+      }
+
+      .fade{
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 100%;
+        width: 60px;
+        background: url(images/fade.png);
       }
 
       img {

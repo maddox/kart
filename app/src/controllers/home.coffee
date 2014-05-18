@@ -7,14 +7,6 @@ Cards = require './cards'
 class Home extends Cards
   className: 'app-home'
 
-  events:
-    'click .settings-button': 'showSettings'
-
-  constructor: ->
-    super
-
-    @settings = new App.Settings
-
   build: ->
     super
 
@@ -27,9 +19,6 @@ class Home extends Cards
 
     _.filter @gameConsoles, (gameConsole) ->
       gameConsole.imageExists()
-
-  showSettings: ->
-    app.showSettings()
 
   showGames: (gameConsole) ->
     app.showGames(gameConsole)

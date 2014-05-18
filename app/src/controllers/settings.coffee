@@ -15,7 +15,6 @@ class Settings extends Spine.Controller
   events:
     'click #retroarch_path_button': 'browseRetroarchPath'
     'click #roms_path_button': 'browseRomsPath'
-    'click .settings-button': 'showHome'
 
   constructor: ->
     super
@@ -27,9 +26,6 @@ class Settings extends Spine.Controller
 
   render: ->
     @html @view 'main/settings', @
-
-  showHome: ->
-    app.showHome()
 
   build: ->
     @retroarchPathInput.html(@settings.retroarchPath())

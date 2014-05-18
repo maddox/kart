@@ -12,6 +12,9 @@ Spine.Controller.prototype.view = (path, data) ->
 class App extends Spine.Stack
   className: 'stack root'
 
+  events:
+    'click .settings-button': 'toggleSettings'
+
   controllers:
     home: Home
     games: Games
@@ -26,10 +29,15 @@ class App extends Spine.Stack
         break
 
   showHome: ->
+    console.log('showing home')
+
     @home.active()
 
-  showSettings: ->
-    @settings.active()
+  toggleSettings: ->
+    if @settings.isActive()
+      @home.active()
+    else
+      @settings.active()
 
   showGames: (gameConsole) ->
     @games.gameConsole = gameConsole

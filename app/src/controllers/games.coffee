@@ -31,12 +31,13 @@ class Games extends Spine.Controller
     @perRow = 4
     @perPage = @rows * @perRow
 
+
+  build: ->
     @numberOfPages = 0
     @page = 0
     @x = -1
     @y = -1
 
-  build: ->
     @games = @gameConsole.games()
 
     @numberOfPages = parseInt(@games.length / @perPage)

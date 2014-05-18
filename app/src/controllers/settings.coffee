@@ -46,6 +46,9 @@ class Settings extends Spine.Controller
   keyboardNav: (e) ->
 
     switch e.keyCode
+      when KeyCodes.backspace
+        app.showHome()
+        e.preventDefault()
       when KeyCodes.esc
         app.showHome()
         e.preventDefault()

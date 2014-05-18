@@ -166,6 +166,8 @@ class Cards extends Spine.Controller
       when KeyCodes.enter
         @pickCardAtIndex(@currentlySelectedCard)
         e.preventDefault()
+      when KeyCodes.backspace
+        e.preventDefault()
       when KeyCodes.esc
         e.preventDefault()
 

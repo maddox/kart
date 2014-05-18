@@ -1,7 +1,7 @@
 eco = require "eco"
 fs  = require "fs"
 
-Main = require './controllers/main'
+Games = require './controllers/games'
 Settings = require './controllers/settings'
 
 Spine.Controller.prototype.view = (path, data) ->
@@ -12,10 +12,10 @@ class App extends Spine.Stack
   className: 'stack root'
 
   controllers:
-    main: Main
+    games: Games
     settings: Settings
 
-  default: 'main'
+  default: 'games'
 
   activeController: ->
     for controller in @manager.controllers
@@ -26,9 +26,9 @@ class App extends Spine.Stack
   showSettings: ->
     @settings.active()
 
-  showMain: ->
-    @main.update()
-    @main.active()
+  showGames: ->
+    @games.update()
+    @games.active()
 
   keydown: (e) ->
     @activeController().keyboardNav(e)

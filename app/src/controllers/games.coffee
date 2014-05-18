@@ -4,8 +4,8 @@ $      = Spine.$
 
 fsUtils = require '../lib/fs-utils'
 
-class Main extends Spine.Controller
-  className: 'app-main'
+class Games extends Spine.Controller
+  className: 'app-games'
 
   elements:
     '.cards .card': 'cards'
@@ -54,7 +54,7 @@ class Main extends Spine.Controller
     @numberOfPages++ if @games.length % @perPage
 
   render: ->
-    @html @view 'main/main', @
+    @html @view 'main/games', @
 
   update: ->
     @build()
@@ -191,4 +191,4 @@ class Main extends Spine.Controller
       when KeyCodes.esc
         e.preventDefault()
 
-module.exports = Main
+module.exports = Games

@@ -17,7 +17,7 @@ class Home extends Cards
     @gameConsoles.push new App.GameConsole(prefix: "gba", extensions: ["gba", "zip"])
     @gameConsoles.push new App.GameConsole(prefix: "megadrive", extensions: ["bin", "zip"])
 
-    _.filter @gameConsoles, (gameConsole) ->
+    @gameConsoles = _.filter @gameConsoles, (gameConsole) ->
       gameConsole.imageExists()
 
   showGames: (gameConsole) ->

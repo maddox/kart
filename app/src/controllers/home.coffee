@@ -11,6 +11,7 @@ class Home extends Cards
     super
 
     @gameConsoles = []
+    @gameConsoles.push new App.GameConsole(prefix: "arcade", extensions: ["zip"])
     @gameConsoles.push new App.GameConsole(prefix: "nes", extensions: ["nes", "zip"])
     @gameConsoles.push new App.GameConsole(prefix: "snes", extensions: ["smc", "zip"])
     @gameConsoles.push new App.GameConsole(prefix: "gb", extensions: ["gb", "gbc", "zip"])

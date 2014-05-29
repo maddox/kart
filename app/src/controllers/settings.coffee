@@ -22,8 +22,8 @@ class Settings extends Spine.Controller
 
     @settings = new App.Settings
 
-    @build()
     @render()
+    @build()
 
   render: ->
     @html @view 'main/settings', @

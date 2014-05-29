@@ -42,6 +42,18 @@ class Cards extends Spine.Controller
     number++ if @numberOfItems() % @perPage
     number
 
+  rangeForPage: (page) ->
+    start = page*@perPage
+
+    if @numberOfItems() <= start + @perPage
+      length = @numberOfItems() - start
+    else
+      length = @perPage
+
+    end = start + length
+
+    [start...end]
+
   numberOfItems: ->
     1
 

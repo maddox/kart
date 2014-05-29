@@ -92,7 +92,7 @@ class Cards extends Spine.Controller
     if j >= @perRow
       # max right to the far right on the last page
       if j >= @page+1 >= @numberOfPages()
-        j = 3
+        j = @perRow-1
       # advance a page
       else
         j = 0

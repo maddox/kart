@@ -22,7 +22,6 @@ class Cards extends Spine.Controller
     @update()
 
   build: ->
-
     if @settings.aspect() == "16x9"
       @perRow = 4
       @rows = 3
@@ -39,6 +38,15 @@ class Cards extends Spine.Controller
   render: ->
     @html @view 'main/cards', @
     @setSelected(0,0);
+
+    if @settings.aspect() == '16x9'
+      $('.page-container:first-of-type').css('margin-left', '4%')
+      $('.cards .card').css('margin', '0 2% 2% 0')
+      $('.cards .card').css('width', '23%')
+    else if @settings.aspect() == '4x3'
+      $('.page-container:first-of-type').css('margin-left', '6%')
+      $('.cards .card').css('margin', '0 3% 3% 0')
+      $('.cards .card').css('width', '30%')
 
   update: ->
     @build()

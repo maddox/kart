@@ -21,6 +21,7 @@ class Cards extends Spine.Controller
     @rows = 3
     @perRow = 4
     @perPage = @rows * @perRow
+    @settings = new App.Settings
 
     @update()
 

@@ -17,15 +17,21 @@ class Cards extends Spine.Controller
     super
 
     @currentlySelectedCard = null
-
-    @rows = 3
-    @perRow = 4
-    @perPage = @rows * @perRow
     @settings = new App.Settings
 
     @update()
 
   build: ->
+
+    if @settings.aspect() == "16x9"
+      @perRow = 4
+      @rows = 3
+    else if @settings.aspect() == "4x3"
+      @perRow = 3
+      @rows = 4
+
+    @perPage = @rows * @perRow
+
     @page = 0
     @x = -1
     @y = -1

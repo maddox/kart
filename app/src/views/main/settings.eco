@@ -15,4 +15,13 @@
     <button id="roms_path_button">Change...</button>
   </div>
 
+  <div class="field clearfix">
+    <p class="label">Aspect Ratio</p>
+    <select id="aspect" name="aspect">
+      <% for aspect in @settings.aspects: %>
+      <option value="<%= aspect %>" <%= "selected='selected'" if aspect == @settings.aspect() %>><%= aspect %></option>
+      <% end %>
+    </select>
+  </div>
+
 </div>

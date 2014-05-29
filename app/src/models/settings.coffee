@@ -1,5 +1,9 @@
 class Settings extends Spine.Model
 
+  constructor: ->
+    super
+    @aspects = ['16x9', '4x3']
+
   clear: ->
     window.localStorage.clear()
 
@@ -20,5 +24,11 @@ class Settings extends Spine.Model
 
   setRomsPath: (path) ->
     @writeSetting('romsPath', path)
+
+  aspect: ->
+    @readSetting('aspect') || '16x9'
+
+  setAspect: (aspect) ->
+    @writeSetting('aspect', aspect)
 
 module.exports = Settings

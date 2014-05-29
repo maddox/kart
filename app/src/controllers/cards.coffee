@@ -17,14 +17,20 @@ class Cards extends Spine.Controller
     super
 
     @currentlySelectedCard = null
-
-    @rows = 3
-    @perRow = 4
-    @perPage = @rows * @perRow
+    @settings = new App.Settings
 
     @update()
 
   build: ->
+    if @settings.aspect() == "16x9"
+      @perRow = 4
+      @rows = 3
+    else if @settings.aspect() == "4x3"
+      @perRow = 3
+      @rows = 4
+
+    @perPage = @rows * @perRow
+
     @page = 0
     @x = -1
     @y = -1
@@ -32,6 +38,15 @@ class Cards extends Spine.Controller
   render: ->
     @html @view 'main/cards', @
     @setSelected(0,0);
+
+    if @settings.aspect() == '16x9'
+      $('.page-container:first-of-type').css('margin-left', '4%')
+      $('.cards .card').css('margin', '0 2% 2% 0')
+      $('.cards .card').css('width', '23%')
+    else if @settings.aspect() == '4x3'
+      $('.page-container:first-of-type').css('margin-left', '6%')
+      $('.cards .card').css('margin', '0 3% 3% 0')
+      $('.cards .card').css('width', '30%')
 
   update: ->
     @build()
@@ -41,6 +56,18 @@ class Cards extends Spine.Controller
     number = parseInt(@numberOfItems() / @perPage)
     number++ if @numberOfItems() % @perPage
     number
+
+  rangeForPage: (page) ->
+    start = page*@perPage
+
+    if @numberOfItems() <= start + @perPage
+      length = @numberOfItems() - start
+    else
+      length = @perPage
+
+    end = start + length
+
+    [start...end]
 
   numberOfItems: ->
     1
@@ -80,7 +107,7 @@ class Cards extends Spine.Controller
     if j >= @perRow
       # max right to the far right on the last page
       if j >= @page+1 >= @numberOfPages()
-        j = 3
+        j = @perRow-1
       # advance a page
       else
         j = 0

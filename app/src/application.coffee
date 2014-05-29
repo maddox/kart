@@ -31,11 +31,12 @@ class App extends Spine.Stack
   showHome: ->
     console.log('showing home')
 
+    @home.update()
     @home.active()
 
   toggleSettings: ->
     if @settings.isActive()
-      @home.active()
+      @showHome()
     else
       @settings.active()
 

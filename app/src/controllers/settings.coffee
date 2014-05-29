@@ -15,6 +15,7 @@ class Settings extends Spine.Controller
   events:
     'click #retroarch_path_button': 'browseRetroarchPath'
     'click #roms_path_button': 'browseRomsPath'
+    'change #aspect': 'setAspect'
 
   constructor: ->
     super
@@ -42,6 +43,9 @@ class Settings extends Spine.Controller
     if path
       @settings.setRomsPath(path)
       @build()
+
+  setAspect: (e) ->
+    @settings.setAspect($(e.currentTarget).val())
 
   keyboardNav: (e) ->
 

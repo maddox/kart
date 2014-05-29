@@ -36,7 +36,7 @@ class App extends Spine.Stack
 
   toggleSettings: ->
     if @settings.isActive()
-      @home.active()
+      @showHome()
     else
       @settings.active()
 

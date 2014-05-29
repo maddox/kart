@@ -31,6 +31,7 @@ class App extends Spine.Stack
   showHome: ->
     console.log('showing home')
 
+    @home.update()
     @home.active()
 
   toggleSettings: ->

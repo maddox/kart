@@ -27,8 +27,9 @@ class GameConsole extends Spine.Model
     fsUtils.exists(@imagePath())
 
   games: ->
+    gameConsole = @
     games = _.map @romPaths(), (path) ->
-      new App.Game(filePath: path, gameConsole:@)
+      new App.Game(filePath: path, gameConsole: gameConsole)
 
     _.filter games, (game) ->
       game.imageExists()

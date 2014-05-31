@@ -11,9 +11,6 @@ class GameConsole extends Spine.Model
     super
     @settings = new App.Settings
 
-  basePath: ->
-    @settings.romsPath()
-
   path: ->
     path.join(@settings.romsPath(), @prefix)
 

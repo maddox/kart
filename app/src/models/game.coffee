@@ -2,33 +2,19 @@ _ = require 'underscore'
 Spine._ = require 'underscore'
 
 fsUtils = require '../lib/fs-utils'
+path = require 'path'
 
 class Game extends Spine.Model
-  @configure "Game", "path"
+  @configure "Game", "filePath", "gameConsole"
 
   filename: ->
-    parts = @path.split('/')
-    parts[parts.length-1]
-
-  gameConsole: ->
-    parts = @path.split('/')
-    parts[parts.length-2]
-
-  baseName: ->
-    parts = @filename().split('.')
-    parts.pop()
-    parts.join('.')
+    path.basename(@filePath)
 
   name: ->
-    @baseName().replace /\./g, ' '
-
-  basePath: ->
-    parts = @path.split('/')
-    parts.pop()
-    parts.join('/')
+    path.basename(@filePath, path.extname(@filePath))
 
   imagePath: ->
-    "#{@basePath()}/images/#{@baseName()}.png"
+    path.join(path.dirname(@filePath), 'images', "#{@name()}.png")
 
   imageExists: ->
     fsUtils.exists(@imagePath())

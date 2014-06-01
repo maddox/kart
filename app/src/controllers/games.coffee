@@ -22,12 +22,10 @@ class Games extends Cards
     @games = @gameConsole.games() if @gameConsole
 
   launchGame: (game) ->
-    options = []
 
     switch os.platform()
       when "darwin"
         command = path.join(@settings.retroarchPath(), 'bin', 'retroarch')
-        options.push("--config", "#{@settings.retroarchPath()}/configs/all/retroarch.cfg")
       when "win32"
         command = path.join(@settings.retroarchPath(), 'retroarch.exe')
       else
@@ -36,10 +34,9 @@ class Games extends Cards
 
     configPath = path.join(__dirname, '..', '..', 'configs')
 
-    options.push("--appendconfig", path.join(configPath, 'input.cfg'),
-                 "--appendconfig", path.join(configPath, os.platform(), 'kart.cfg'),
-                 "--appendconfig", path.join(configPath, os.platform(), "#{@gameConsole.prefix}.cfg"),
-                 path.normalize(game.filePath))
+    options = ["--config", path.join(configPath, os.platform(), 'kart.cfg'),
+               "--appendconfig", path.join(configPath, os.platform(), "#{@gameConsole.prefix}.cfg"),
+               path.normalize(game.filePath)]
 
     {spawn} = require 'child_process'
     ls = spawn command, options

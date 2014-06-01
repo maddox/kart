@@ -2,6 +2,7 @@ _ = require 'underscore'
 Spine._ = require 'underscore'
 
 fsUtils = require '../lib/fs-utils'
+path = require 'path'
 
 class GameConsole extends Spine.Model
   @configure "GameConsole", "prefix", "extensions"
@@ -10,11 +11,8 @@ class GameConsole extends Spine.Model
     super
     @settings = new App.Settings
 
-  basePath: ->
-    @settings.romsPath()
-
   path: ->
-    "#{@basePath()}/#{@prefix}"
+    path.join(@settings.romsPath(), @prefix)
 
   name: ->
     @prefix
@@ -23,14 +21,15 @@ class GameConsole extends Spine.Model
     fsUtils.listSync(@path(), @extensions)
 
   imagePath: ->
-    "#{@path()}/image.png"
+    path.join(@path(), 'image.png')
 
   imageExists: ->
     fsUtils.exists(@imagePath())
 
   games: ->
+    gameConsole = @
     games = _.map @romPaths(), (path) ->
-      new App.Game(path: path)
+      new App.Game(filePath: path, gameConsole: gameConsole)
 
     _.filter games, (game) ->
       game.imageExists()

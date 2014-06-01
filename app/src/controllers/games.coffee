@@ -3,6 +3,8 @@ Spine._ = require 'underscore'
 $      = Spine.$
 
 fsUtils = require '../lib/fs-utils'
+path = require 'path'
+os = require 'os'
 
 Cards = require './cards'
 
@@ -20,8 +22,21 @@ class Games extends Cards
     @games = @gameConsole.games() if @gameConsole
 
   launchGame: (game) ->
-    command = "#{@settings.retroarchPath()}/bin/retroarch"
-    options = ["--config", "#{@settings.retroarchPath()}/configs/all/retroarch.cfg", "--appendconfig", "#{@settings.retroarchPath()}/configs/#{game.gameConsole()}/retroarch.cfg", game.path]
+
+    switch os.platform()
+      when "darwin"
+        command = path.join(@settings.retroarchPath(), 'bin', 'retroarch')
+      when "win32"
+        command = path.join(@settings.retroarchPath(), 'retroarch.exe')
+      else
+        alert("Sorry, this operating system isn't supported.")
+        return
+
+    configPath = path.join(__dirname, '..', '..', 'configs')
+
+    options = ["--config", path.join(configPath, os.platform(), 'kart.cfg'),
+               "--appendconfig", path.join(configPath, os.platform(), "#{@gameConsole.prefix}.cfg"),
+               path.normalize(game.filePath)]
 
     {spawn} = require 'child_process'
     ls = spawn command, options

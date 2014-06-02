@@ -18,6 +18,7 @@ class Home extends Cards
     @gameConsoles.push new App.GameConsole(prefix: "gb", extensions: ["gb", "gbc", "zip"])
     @gameConsoles.push new App.GameConsole(prefix: "gba", extensions: ["gba", "zip"])
     @gameConsoles.push new App.GameConsole(prefix: "megadrive", extensions: ["bin", "zip"])
+    @gameConsoles.push new App.GameConsole(prefix: "psx", extensions: ["cue", "img"])
 
     @gameConsoles = _.filter @gameConsoles, (gameConsole) ->
       gameConsole.imageExists()

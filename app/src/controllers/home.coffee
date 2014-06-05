@@ -10,8 +10,9 @@ class Home extends Cards
   build: ->
     super
 
+    @gameConsoles = []
+    
     if @settings.romsPath()
-      @gameConsoles = []
       @gameConsoles.push new App.GameConsole(prefix: "arcade", extensions: ["zip"])
       @gameConsoles.push new App.GameConsole(prefix: "nes", extensions: ["nes", "zip"])
       @gameConsoles.push new App.GameConsole(prefix: "snes", extensions: ["smc", "zip"])

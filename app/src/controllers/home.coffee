@@ -40,7 +40,7 @@ class Home extends Cards
 
   cardFor: (index) ->
     gameConsole = @gameConsoles[index]
-    data = {"imagePath": gameConsole.imagePath(), "title": gameConsole.name()}
+    data = {"imagePath": gameConsole.imagePath(), "title": gameConsole.name}
     @view 'main/_card', data
 
 module.exports = Home

@@ -1,3 +1,4 @@
+<div class="header"></div>
 <% for i in [0...@numberOfPages()]: %>
   <div class="page-container">
     <div class="cards clearfix">

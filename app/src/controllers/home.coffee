@@ -7,6 +7,9 @@ Cards = require './cards'
 class Home extends Cards
   className: 'app-home'
 
+  elements:
+    '.header': 'header'
+
   build: ->
     super
 
@@ -27,7 +30,7 @@ class Home extends Cards
 
   render: ->
     super()
-    @prepend('<div class="head">d<p class="settings-button btn">Settings</p></div>')
+    @header.append('<p class="settings-button btn">Settings</p>')
 
   showGames: (gameConsole) ->
     app.showGames(gameConsole)

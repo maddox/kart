@@ -17,7 +17,6 @@ App.Settings = require './models/settings'
 
 $ =>
   $('body').addClass 'loaded'
-  $('body').append('<p class="settings-button btn">Settings</p>')
 
 
   window.app = new App

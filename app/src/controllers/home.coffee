@@ -11,7 +11,7 @@ class Home extends Cards
     super
 
     @gameConsoles = []
-    
+
     if @settings.romsPath()
       @gameConsoles.push new App.GameConsole(prefix: "arcade", extensions: ["zip"])
       @gameConsoles.push new App.GameConsole(prefix: "nes", extensions: ["nes", "zip"])
@@ -24,6 +24,10 @@ class Home extends Cards
 
       @gameConsoles = _.filter @gameConsoles, (gameConsole) ->
         gameConsole.imageExists()
+
+  render: ->
+    super()
+    @prepend('<div class="head">d<p class="settings-button btn">Settings</p></div>')
 
   showGames: (gameConsole) ->
     app.showGames(gameConsole)

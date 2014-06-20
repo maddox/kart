@@ -13,14 +13,14 @@ class Home extends Cards
     @gameConsoles = []
 
     if @settings.romsPath()
-      @gameConsoles.push new App.GameConsole(prefix: "arcade", extensions: ["zip"])
-      @gameConsoles.push new App.GameConsole(prefix: "nes", extensions: ["nes", "zip"])
-      @gameConsoles.push new App.GameConsole(prefix: "snes", extensions: ["smc", "zip"])
-      @gameConsoles.push new App.GameConsole(prefix: "n64", extensions: ["z64", "zip"])
-      @gameConsoles.push new App.GameConsole(prefix: "gb", extensions: ["gb", "gbc", "zip"])
-      @gameConsoles.push new App.GameConsole(prefix: "gba", extensions: ["gba", "zip"])
-      @gameConsoles.push new App.GameConsole(prefix: "megadrive", extensions: ["bin", "zip"])
-      @gameConsoles.push new App.GameConsole(prefix: "psx", extensions: ["cue", "img"])
+      @gameConsoles.push new App.GameConsole(prefix: "arcade", extensions: ["zip"], name: "Arcade")
+      @gameConsoles.push new App.GameConsole(prefix: "nes", extensions: ["nes", "zip"], name: "Nintendo Entertainment System")
+      @gameConsoles.push new App.GameConsole(prefix: "snes", extensions: ["smc", "zip"], name: "Super Nintendo")
+      @gameConsoles.push new App.GameConsole(prefix: "n64", extensions: ["z64", "zip"], name: "Nintendo 64")
+      @gameConsoles.push new App.GameConsole(prefix: "gb", extensions: ["gb", "gbc", "zip"], name: "GameBoy")
+      @gameConsoles.push new App.GameConsole(prefix: "gba", extensions: ["gba", "zip"], name: "GameBoy Advance")
+      @gameConsoles.push new App.GameConsole(prefix: "megadrive", extensions: ["bin", "zip"], name: "Sega Genesis")
+      @gameConsoles.push new App.GameConsole(prefix: "psx", extensions: ["cue", "img"], name: "Sony Playstation")
 
       @gameConsoles = _.filter @gameConsoles, (gameConsole) ->
         gameConsole.imageExists()

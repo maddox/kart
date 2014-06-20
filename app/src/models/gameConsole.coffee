@@ -5,7 +5,7 @@ fsUtils = require '../lib/fs-utils'
 path = require 'path'
 
 class GameConsole extends Spine.Model
-  @configure "GameConsole", "prefix", "extensions"
+  @configure "GameConsole", "name", "prefix", "extensions"
 
   constructor: ->
     super
@@ -13,9 +13,6 @@ class GameConsole extends Spine.Model
 
   path: ->
     path.join(@settings.romsPath(), @prefix)
-
-  name: ->
-    @prefix
 
   romPaths: ->
     fsUtils.listSync(@path(), @extensions)

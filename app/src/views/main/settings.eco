@@ -1,4 +1,6 @@
-<p class="settings-button btn">Back to Roms</p>
+<div class="head">
+  <p class="settings-button btn">Back to Roms</p>
+</div>
 
 <div class="settings">
   <h1>Settings</h1>

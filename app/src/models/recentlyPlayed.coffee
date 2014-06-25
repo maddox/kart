@@ -19,9 +19,6 @@ class RecentlyPlayed extends Spine.Model
   load: ->
     if fsUtils.exists(@filePath())
       @data = require @filePath()
-    else
-      console.log('no recently played')
-
 
       for gameBlob in @data['games']
         romPath = path.join(@settings.romsPath(), gameBlob['gameConsole'], gameBlob['filename'])

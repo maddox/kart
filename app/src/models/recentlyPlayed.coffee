@@ -33,4 +33,11 @@ class RecentlyPlayed extends Spine.Model
     data = {'games': @games}
     fsUtils.writeSync(@filePath(), JSON.stringify(data))
 
+  addGame: (game) ->
+    @games.unshift(game)
+    @games = @games.unique()
+    @games = @games[0..6]
+    @save()
+
+
 module.exports = RecentlyPlayed

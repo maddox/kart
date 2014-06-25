@@ -36,7 +36,7 @@ class RecentlyPlayed extends Spine.Model
   addGame: (game) ->
     @games.unshift(game)
     @games = @games.unique()
-    @games = @games[0..6]
+    @games = @games[0..5]
     @save()
 
 

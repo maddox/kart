@@ -7,6 +7,9 @@ path = require 'path'
 class Game extends Spine.Model
   @configure "Game", "filePath", "gameConsole"
 
+  toJSON: (objects) ->
+    data = {'gameConsole': @gameConsole.prefix, 'filename': @filename()}
+
   filename: ->
     path.basename(@filePath)
 

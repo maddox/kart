@@ -8,6 +8,7 @@ require './lib/spine/relation'
 window.Spine = Spine
 
 require './lib/hotkeys'
+require './lib/extensions'
 
 window.App = require './application'
 

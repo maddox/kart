@@ -15,6 +15,7 @@ class Games extends Cards
     super
 
     @settings = new App.Settings
+    @recentlyPlayed = new App.RecentlyPlayed
 
   build: ->
     super
@@ -31,6 +32,8 @@ class Games extends Cards
       else
         alert("Sorry, this operating system isn't supported.")
         return
+
+    @recentlyPlayed.addGame(game)
 
     configPath = path.join(__dirname, '..', '..', 'configs')
 

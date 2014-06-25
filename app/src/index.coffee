@@ -8,12 +8,14 @@ require './lib/spine/relation'
 window.Spine = Spine
 
 require './lib/hotkeys'
+require './lib/extensions'
 
 window.App = require './application'
 
 App.Game = require './models/game'
 App.GameConsole = require './models/gameConsole'
 App.Settings = require './models/settings'
+App.RecentlyPlayed = require './models/recentlyPlayed'
 
 $ =>
   $('body').addClass 'loaded'

@@ -29,4 +29,8 @@ class RecentlyPlayed extends Spine.Model
       _.filter @games, (game) ->
         game.imageExists()
 
+  save: ->
+    data = {'games': @games}
+    fsUtils.writeSync(@filePath(), JSON.stringify(data))
+
 module.exports = RecentlyPlayed

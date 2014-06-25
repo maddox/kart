@@ -9,6 +9,7 @@ class RecentlyPlayed extends Spine.Model
 
   constructor: ->
     super
+    @games = []
     @settings = new App.Settings
     @load()
 
@@ -21,16 +22,14 @@ class RecentlyPlayed extends Spine.Model
     else
       console.log('no recently played')
 
-  games: ->
-    games = []
-    for gameBlob in @data['games']
-      console.log(gameBlob)
-      romPath = path.join(@settings.romsPath(), gameBlob['gameConsole'], gameBlob['filename'])
-      if fsUtils.exists(romPath)
-        gameConsole = new App.GameConsole(prefix: gameBlob['gameConsole'])
-        games.push(new App.Game(filePath: romPath, gameConsole: gameConsole))
 
-    _.filter games, (game) ->
-      game.imageExists()
+      for gameBlob in @data['games']
+        romPath = path.join(@settings.romsPath(), gameBlob['gameConsole'], gameBlob['filename'])
+        if fsUtils.exists(romPath)
+          gameConsole = new App.GameConsole(prefix: gameBlob['gameConsole'])
+          @games.push(new App.Game(filePath: romPath, gameConsole: gameConsole))
+
+      _.filter @games, (game) ->
+        game.imageExists()
 
 module.exports = RecentlyPlayed

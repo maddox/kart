@@ -37,9 +37,6 @@ module.exports = (grunt) ->
     copy:
       app:
         files: [
-          expand: true,
-          src: ['app/**', 'speakeasy.pem']
-          dest: 'atom-shell/Atom.app/Contents/Resources/'
         ]
 
   grunt.loadNpmTasks('grunt-contrib-copy');

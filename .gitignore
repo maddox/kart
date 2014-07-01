@@ -9,3 +9,4 @@ data-generator/avatars
 data-generator/data
 data-generator/commits
 .DS_Store
+build

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+echo "Cleaning..."
+rm -Rf build/win32/kart/kart.zip
+rm -Rf build/win32/kart/resources/app
+
+echo "Copying files..."
+cp -r app build/win32/kart/resources
+
+echo "Archiving..."
+cd build/win32
+zip -r kart.zip kart
+
+echo "Complete!"

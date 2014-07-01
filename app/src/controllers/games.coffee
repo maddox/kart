@@ -5,6 +5,7 @@ $      = Spine.$
 fsUtils = require '../lib/fs-utils'
 path = require 'path'
 os = require 'os'
+shell = require 'shell'
 
 Cards = require './cards'
 
@@ -26,27 +27,36 @@ class Games extends Cards
 
     switch os.platform()
       when "darwin"
-        command = path.join(@settings.retroarchPath(), 'bin', 'retroarch')
+        if game.gameConsole.prefix == "mac"
+          command = game.filePath
+        else
+          command = path.join(@settings.retroarchPath(), 'bin', 'retroarch')
       when "win32"
-        command = path.join(@settings.retroarchPath(), 'retroarch.exe')
+        if game.gameConsole.prefix == "pc"
+          command = game.filePath
+        else
+          command = path.join(@settings.retroarchPath(), 'retroarch.exe')
       else
         alert("Sorry, this operating system isn't supported.")
         return
 
+    if game.gameConsole.prefix != "pc" && game.gameConsole.prefix != "mac"
+      configPath = path.join(__dirname, '..', '..', 'configs')
+      options = ["--config", path.join(configPath, os.platform(), 'kart.cfg'),
+           "--appendconfig", path.join(configPath, os.platform(), "#{@gameConsole.prefix}.cfg"),
+           path.normalize(game.filePath)]
+
     @recentlyPlayed.addGame(game)
 
-    configPath = path.join(__dirname, '..', '..', 'configs')
-
-    options = ["--config", path.join(configPath, os.platform(), 'kart.cfg'),
-               "--appendconfig", path.join(configPath, os.platform(), "#{@gameConsole.prefix}.cfg"),
-               path.normalize(game.filePath)]
-
-    {spawn} = require 'child_process'
-    ls = spawn command, options
-    # receive all output and process
-    ls.stdout.on 'data', (data) -> console.log data.toString().trim()
-    # receive error messages and process
-    ls.stderr.on 'data', (data) -> console.log data.toString().trim()
+    if options
+      {spawn} = require 'child_process'
+      ls = spawn command, options
+      # receive all output and process
+      ls.stdout.on 'data', (data) -> console.log data.toString().trim()
+      # receive error messages and process
+      ls.stderr.on 'data', (data) -> console.log data.toString().trim()
+    else
+      shell.openItem(game.filePath);
 
   numberOfItems: ->
     if @games then @games.length else 0

@@ -2,6 +2,8 @@ _ = require 'underscore'
 Spine._ = require 'underscore'
 $      = Spine.$
 
+os = require 'os'
+
 Cards = require './cards'
 
 class Home extends Cards
@@ -18,6 +20,13 @@ class Home extends Cards
     @gameConsoles = []
 
     if @settings.romsPath()
+      ## platform dependent sections
+      switch os.platform()
+        when "darwin"
+          @gameConsoles.push new App.GameConsole(prefix: "mac", extensions: ["lnk"], name: "Steam")
+        when "win32"
+          @gameConsoles.push new App.GameConsole(prefix: "pc", extensions: ["lnk"], name: "Steam")
+
       @gameConsoles.push new App.GameConsole(prefix: "arcade", extensions: ["zip"], name: "Arcade")
       @gameConsoles.push new App.GameConsole(prefix: "nes", extensions: ["nes", "zip"], name: "Nintendo Entertainment System")
       @gameConsoles.push new App.GameConsole(prefix: "snes", extensions: ["smc", "zip"], name: "Super Nintendo")

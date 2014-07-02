@@ -23,9 +23,9 @@ class Home extends Cards
       ## platform dependent sections
       switch os.platform()
         when "darwin"
-          @gameConsoles.push new App.GameConsole(prefix: "mac", extensions: ["lnk"], name: "Steam")
+          @gameConsoles.push new App.GameConsole(prefix: "mac", extensions: ["lnk", "url"], name: "Steam")
         when "win32"
-          @gameConsoles.push new App.GameConsole(prefix: "pc", extensions: ["lnk"], name: "Steam")
+          @gameConsoles.push new App.GameConsole(prefix: "pc", extensions: ["lnk", "url"], name: "Steam")
 
       @gameConsoles.push new App.GameConsole(prefix: "arcade", extensions: ["zip"], name: "Arcade")
       @gameConsoles.push new App.GameConsole(prefix: "nes", extensions: ["nes", "zip"], name: "Nintendo Entertainment System")

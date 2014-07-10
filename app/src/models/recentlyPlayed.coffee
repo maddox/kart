@@ -14,10 +14,10 @@ class RecentlyPlayed extends Spine.Model
     @load()
 
   filePath: ->
-    path.join(@settings.romsPath(), 'recently-played.json')
+    path.join(@settings.romsPath(), 'recently-played.json') if @settings.romsPath()
 
   load: ->
-    if fsUtils.exists(@filePath())
+    if @filePath() && fsUtils.exists(@filePath())
       @data = require @filePath()
 
       for gameBlob in @data['games']

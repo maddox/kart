@@ -3,6 +3,7 @@ fs  = require "fs"
 
 Home = require './controllers/home'
 Collections = require './controllers/collections'
+CollectionPicker = require './controllers/collectionPicker'
 Games = require './controllers/games'
 Settings = require './controllers/settings'
 
@@ -19,6 +20,7 @@ class App extends Spine.Stack
   controllers:
     home: Home
     collections: Collections
+    collectionPicker: CollectionPicker
     games: Games
     settings: Settings
 
@@ -41,6 +43,10 @@ class App extends Spine.Stack
 
     @collections.update()
     @home.active()
+
+  showCollectionPicker: (game) ->
+    @collectionPicker.show(game)
+
 
   toggleSettings: ->
     if @settings.isActive()

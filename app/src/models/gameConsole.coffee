@@ -9,7 +9,9 @@ class GameConsole extends Spine.Model
 
   constructor: ->
     super
+    @games = []
     @settings = new App.Settings
+    @loadGames()
 
   path: ->
     path.join(@settings.romsPath(), @prefix)
@@ -23,12 +25,12 @@ class GameConsole extends Spine.Model
   imageExists: ->
     fsUtils.exists(@imagePath())
 
-  games: ->
+  loadGames: ->
     gameConsole = @
-    games = _.map @romPaths(), (path) ->
+    @games = _.map @romPaths(), (path) ->
       new App.Game(filePath: path, gameConsole: gameConsole)
 
-    _.filter games, (game) ->
+    @games = _.filter @games, (game) ->
       game.imageExists()
 
 

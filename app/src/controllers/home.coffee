@@ -5,11 +5,8 @@ $      = Spine.$
 class Home extends Spine.Controller
   className: 'app-home'
 
-  elements:
-    '.browse': 'browse'
-    '.recently-played': 'recentlyPlayed'
-
   events:
+    'click .card': 'launchGame'
     'mouseover .card': 'mouseover'
     'mouseleave .card': 'mouseleave'
 
@@ -19,6 +16,7 @@ class Home extends Spine.Controller
     @settings = new App.Settings
     @recentlyPlayed = new App.RecentlyPlayed
     @favorites = new App.Favorites
+    @retroArch = new App.RetroArch
 
     @currentlySelectedItem = null
 
@@ -33,6 +31,10 @@ class Home extends Spine.Controller
 
   numberOfGames: ->
     if @settings.aspect() == '16x9' then 4 else 3
+
+  launchGame: (e) ->
+    card = $(e.currentTarget)
+    @retroArch.launchGame(@recentlyPlayed.games[card.index()])
 
   selectItem: (element) ->
     item = $(element)

@@ -20,8 +20,6 @@ class Games extends Cards
 
     @settings = new App.Settings
     @recentlyPlayed = new App.RecentlyPlayed
-    @collections = App.Collection.all()
-    console.log(@collections)
 
   build: ->
     super

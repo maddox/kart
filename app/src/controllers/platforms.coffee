@@ -6,8 +6,8 @@ os = require 'os'
 
 Cards = require './cards'
 
-class Home extends Cards
-  className: 'app-home'
+class Platforms extends Cards
+  className: 'app-platforms'
 
   elements:
     '.header': 'header'
@@ -58,4 +58,4 @@ class Home extends Cards
     data = {"imagePath": gameConsole.imagePath(), "title": gameConsole.name}
     @view 'main/_card', data
 
-module.exports = Home
+module.exports = Platforms

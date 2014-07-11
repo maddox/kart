@@ -26,27 +26,35 @@ class App extends Spine.Stack
 
   default: 'platforms'
 
+  constructor: ->
+    super
+
+    @history = []
+
   activeController: ->
     for controller in @manager.controllers
       if controller.isActive()
         return controller
         break
 
-  showHome: ->
-    console.log('showing home')
+  goTo: (controller) ->
+    @history.push(@activeController())
+    controller.active()
 
+  back: ->
+    controller = @history.pop()
+    controller.active()
+
+  showHome: ->
     @platforms.update()
-    @platforms.active()
+    @goTo(@platforms)
 
   showCollection: ->
-    console.log('showing collections')
-
     @collections.update()
-    @platforms.active()
+    @goTo(@collections)
 
   showCollectionPicker: (game) ->
     @collectionPicker.show(game)
-
 
   toggleSettings: ->
     if @settings.isActive()
@@ -57,7 +65,7 @@ class App extends Spine.Stack
   showGames: (collection) ->
     @games.collection = collection
     @games.update()
-    @games.active()
+    @goTo(@games)
 
   keydown: (e) ->
     @activeController().keyboardNav(e)

@@ -98,10 +98,10 @@ class Games extends Cards
 
     switch e.keyCode
       when KeyCodes.backspace
-        app.showHome()
+        app.back()
         e.preventDefault()
       when KeyCodes.esc
-        app.showHome()
+        app.back()
         e.preventDefault()
 
 

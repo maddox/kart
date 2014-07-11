@@ -42,6 +42,8 @@ class App extends Spine.Stack
     controller.active()
 
   back: ->
+    return if @history.length == 0
+    
     controller = @history.pop()
     controller.active()
 

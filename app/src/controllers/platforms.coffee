@@ -15,8 +15,6 @@ class Platforms extends Cards
   build: ->
     super
 
-    new App.RecentlyPlayed
-
     @gameConsoles = []
 
     if @settings.romsPath()

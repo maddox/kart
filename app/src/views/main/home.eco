@@ -15,13 +15,7 @@
 </section>
 
 <section class="recently-played">
-
-<%- console.log(@numberOfGames()) %>
-
-  <div class="cards clearfix">
-    <% for game in @recentlyPlayed.games[0..@numberOfGames()-1]: %>
-      <%- @cardFor(game) %>
-    <% end %>
-  </div>
-
+  <% for game in @recentlyPlayed.games[0..@numberOfGames()-1]: %>
+    <%- @cardFor(game) %>
+  <% end %>
 </div>

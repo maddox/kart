@@ -1,5 +1,5 @@
 <div class="collections-modal" style="display:none;">
-  <h3>Pick a Collection</h3>
+  <h3>Which collection would you like to add this game to?</h3>
   <div class="cards clearfix">
     <% for collection in @collections: %>
       <%- @cardFor(collection) %>

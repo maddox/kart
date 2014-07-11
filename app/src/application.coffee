@@ -53,7 +53,11 @@ class App extends Spine.Stack
     @platforms.update()
     @goTo(@platforms)
 
-  showCollection: ->
+  showPlatforms: ->
+    @platforms.update()
+    @goTo(@platforms)
+
+  showCollections: ->
     @collections.update()
     @goTo(@collections)
 

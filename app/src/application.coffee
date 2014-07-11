@@ -68,6 +68,14 @@ class App extends Spine.Stack
     @goTo(@games)
 
   keydown: (e) ->
-    @activeController().keyboardNav(e)
+    switch e.keyCode
+      when KeyCodes.backspace
+        @back()
+        e.preventDefault()
+      when KeyCodes.esc
+        @back()
+        e.preventDefault()
+      else
+        @activeController().keyboardNav(e)
 
 module.exports = App

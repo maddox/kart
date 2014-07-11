@@ -93,16 +93,4 @@ class Games extends Cards
       @favorites.removeGame(@games[index])
       favButton.removeClass('fa-heart').addClass('fa-heart-o')
 
-  keyboardNav: (e) ->
-    super
-
-    switch e.keyCode
-      when KeyCodes.backspace
-        app.back()
-        e.preventDefault()
-      when KeyCodes.esc
-        app.back()
-        e.preventDefault()
-
-
 module.exports = Games

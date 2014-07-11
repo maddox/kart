@@ -14,12 +14,14 @@ class Games extends Cards
 
   events:
     'click .card .overlay .game-settings .add-collection': 'addToCollection'
+    'click .card .overlay .game-settings .toggle-favorite': 'toggleFavorite'
 
   constructor: ->
     super
 
     @settings = new App.Settings
     @recentlyPlayed = new App.RecentlyPlayed
+    @favorites = new App.Favorites
 
   build: ->
     super
@@ -77,6 +79,19 @@ class Games extends Cards
     index = card.index() + (@page*@perPage)
 
     app.showCollectionPicker(@games[index])
+
+  toggleFavorite: (e) ->
+    e.stopPropagation()
+    favButton = $(e.currentTarget)
+    card = $(e.currentTarget).parents('.card')
+    index = card.index() + (@page*@perPage)
+
+    if favButton.hasClass('fa-heart-o')
+      @favorites.addGame(@games[index])
+      favButton.removeClass('fa-heart-o').addClass('fa-heart')
+    else
+      @favorites.removeGame(@games[index])
+      favButton.removeClass('fa-heart').addClass('fa-heart-o')
 
   keyboardNav: (e) ->
     super

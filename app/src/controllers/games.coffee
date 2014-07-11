@@ -12,19 +12,23 @@ Cards = require './cards'
 class Games extends Cards
   className: 'app-games'
 
+  events:
+    'click .card .overlay .game-settings': 'editGame'
+
   constructor: ->
     super
 
     @settings = new App.Settings
     @recentlyPlayed = new App.RecentlyPlayed
+    @collections = App.Collection.all()
+    console.log(@collections)
 
   build: ->
     super
 
-    @games = @gameConsole.games() if @gameConsole
+    @games = @collection.games if @collection
 
   launchGame: (game) ->
-
     switch os.platform()
       when "darwin"
         if game.gameConsole.prefix == "mac"
@@ -43,7 +47,7 @@ class Games extends Cards
     if game.gameConsole.prefix != "pc" && game.gameConsole.prefix != "mac"
       configPath = path.join(__dirname, '..', '..', 'configs')
       options = ["--config", path.join(configPath, os.platform(), 'kart.cfg'),
-           "--appendconfig", path.join(configPath, os.platform(), "#{@gameConsole.prefix}.cfg"),
+           "--appendconfig", path.join(configPath, os.platform(), "#{game.gameConsole.prefix}.cfg"),
            path.normalize(game.filePath)]
 
     @recentlyPlayed.addGame(game)
@@ -68,6 +72,13 @@ class Games extends Cards
     game = @games[index]
     data = {"imagePath": game.imagePath(), "title": game.name()}
     @view 'main/_card', data
+
+  editGame: (e) ->
+    e.stopPropagation()
+    card = $(e.currentTarget).parents('.card')
+    index = card.index() + (@page*@perPage)
+
+    app.showCollectionPicker(@games[index])
 
   keyboardNav: (e) ->
     super

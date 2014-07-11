@@ -2,6 +2,8 @@ eco = require "eco"
 fs  = require "fs"
 
 Home = require './controllers/home'
+Collections = require './controllers/collections'
+CollectionPicker = require './controllers/collectionPicker'
 Games = require './controllers/games'
 Settings = require './controllers/settings'
 
@@ -17,6 +19,8 @@ class App extends Spine.Stack
 
   controllers:
     home: Home
+    collections: Collections
+    collectionPicker: CollectionPicker
     games: Games
     settings: Settings
 
@@ -34,14 +38,24 @@ class App extends Spine.Stack
     @home.update()
     @home.active()
 
+  showCollection: ->
+    console.log('showing collections')
+
+    @collections.update()
+    @home.active()
+
+  showCollectionPicker: (game) ->
+    @collectionPicker.show(game)
+
+
   toggleSettings: ->
     if @settings.isActive()
       @showHome()
     else
       @settings.active()
 
-  showGames: (gameConsole) ->
-    @games.gameConsole = gameConsole
+  showGames: (collection) ->
+    @games.collection = collection
     @games.update()
     @games.active()
 

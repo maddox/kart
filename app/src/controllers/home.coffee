@@ -9,12 +9,18 @@ class Home extends Spine.Controller
     '.browse': 'browse'
     '.recently-played': 'recentlyPlayed'
 
+  events:
+    'mouseover .card': 'mouseover'
+    'mouseleave .card': 'mouseleave'
+
   constructor: ->
     super
 
     @settings = new App.Settings
     @recentlyPlayed = new App.RecentlyPlayed
     @favorites = new App.Favorites
+
+    @currentlySelectedItem = null
 
     @render()
 
@@ -27,5 +33,21 @@ class Home extends Spine.Controller
 
   numberOfGames: ->
     if @settings.aspect() == '16x9' then 4 else 3
+
+  selectItem: (element) ->
+    item = $(element)
+    @deselectItem(item) if @currentlySelectedItem
+    item.addClass('selected')
+    @currentlySelectedItem = item
+
+  deselectItem: (element) ->
+    $(element).removeClass('selected')
+
+  mouseover: (e) ->
+    @selectItem(e.currentTarget)
+
+  mouseleave: (e) ->
+    @deselectItem(e.currentTarget)
+
 
 module.exports = Home

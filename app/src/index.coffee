@@ -17,6 +17,7 @@ App.GameConsole = require './models/gameConsole'
 App.Collection = require './models/collection'
 App.Settings = require './models/settings'
 App.RecentlyPlayed = require './models/recentlyPlayed'
+App.Favorites = require './models/favorites'
 
 $ =>
   $('body').addClass 'loaded'

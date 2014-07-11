@@ -3,6 +3,7 @@
     <img src="<%= @imagePath %>"></img>
     <p class="marquee">
       <span class="title"><%= @title %></span>
+      <span class="game-settings"><i class="fa fa-plus-square add-collection" title="Add to Collection"></i> <i class="fa fa-heart<%= "-o" if !@faved %> toggle-favorite" title="Toggle Favorite"></i></span>
       <span class="fade"></span>
     </p>
   </div>

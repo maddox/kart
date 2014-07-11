@@ -13,15 +13,15 @@ class Games extends Cards
   className: 'app-games'
 
   events:
-    'click .card .overlay .game-settings': 'editGame'
+    'click .card .overlay .game-settings .add-collection': 'addToCollection'
+    'click .card .overlay .game-settings .toggle-favorite': 'toggleFavorite'
 
   constructor: ->
     super
 
     @settings = new App.Settings
     @recentlyPlayed = new App.RecentlyPlayed
-    @collections = App.Collection.all()
-    console.log(@collections)
+    @favorites = new App.Favorites
 
   build: ->
     super
@@ -70,15 +70,28 @@ class Games extends Cards
 
   cardFor: (index) ->
     game = @games[index]
-    data = {"imagePath": game.imagePath(), "title": game.name()}
-    @view 'main/_card', data
+    data = {"imagePath": game.imagePath(), "title": game.name(), "faved": @favorites.isFaved(game)}
+    @view 'main/_gameCard', data
 
-  editGame: (e) ->
+  addToCollection: (e) ->
     e.stopPropagation()
     card = $(e.currentTarget).parents('.card')
     index = card.index() + (@page*@perPage)
 
     app.showCollectionPicker(@games[index])
+
+  toggleFavorite: (e) ->
+    e.stopPropagation()
+    favButton = $(e.currentTarget)
+    card = $(e.currentTarget).parents('.card')
+    index = card.index() + (@page*@perPage)
+
+    if favButton.hasClass('fa-heart-o')
+      @favorites.addGame(@games[index])
+      favButton.removeClass('fa-heart-o').addClass('fa-heart')
+    else
+      @favorites.removeGame(@games[index])
+      favButton.removeClass('fa-heart').addClass('fa-heart-o')
 
   keyboardNav: (e) ->
     super

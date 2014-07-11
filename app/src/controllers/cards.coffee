@@ -27,7 +27,7 @@ class Cards extends Spine.Controller
       @rows = 3
     else if @settings.aspect() == "4x3"
       @perRow = 3
-      @rows = 4
+      @rows = 3
 
     @perPage = @rows * @perRow
 

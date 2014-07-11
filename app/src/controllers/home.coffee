@@ -7,6 +7,8 @@ class Home extends Spine.Controller
 
   events:
     'click .card': 'launchGame'
+    'click .platforms': 'loadPlatforms'
+    'click .collections': 'loadCollections'
     'mouseover .card': 'mouseover'
     'mouseleave .card': 'mouseleave'
 
@@ -35,6 +37,14 @@ class Home extends Spine.Controller
   launchGame: (e) ->
     card = $(e.currentTarget)
     @retroArch.launchGame(@recentlyPlayed.games[card.index()])
+
+  loadPlatforms: (e) ->
+    card = $(e.currentTarget)
+    app.showPlatforms()
+
+  loadCollections: (e) ->
+    card = $(e.currentTarget)
+    app.showCollections()
 
   selectItem: (element) ->
     item = $(element)

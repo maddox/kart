@@ -40,8 +40,8 @@ class App extends Spine.Stack
     else
       @settings.active()
 
-  showGames: (gameConsole) ->
-    @games.gameConsole = gameConsole
+  showGames: (collection) ->
+    @games.collection = collection
     @games.update()
     @games.active()
 

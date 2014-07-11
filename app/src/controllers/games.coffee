@@ -13,7 +13,7 @@ class Games extends Cards
   className: 'app-games'
 
   events:
-    'click .card .overlay .game-settings': 'editGame'
+    'click .card .overlay .game-settings .add-collection': 'addToCollection'
 
   constructor: ->
     super
@@ -73,7 +73,7 @@ class Games extends Cards
     data = {"imagePath": game.imagePath(), "title": game.name(), "faved": @favorites.isFaved(game)}
     @view 'main/_gameCard', data
 
-  editGame: (e) ->
+  addToCollection: (e) ->
     e.stopPropagation()
     card = $(e.currentTarget).parents('.card')
     index = card.index() + (@page*@perPage)

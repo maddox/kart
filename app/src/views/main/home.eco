@@ -1,0 +1,27 @@
+<section class="browse clearfix">
+
+  <div class="square">
+    Platforms
+  </div>
+
+  <div class="square">
+    Collections
+  </div>
+
+  <div class="square">
+    Favorites
+  </div>
+
+</section>
+
+<section class="recently-played">
+
+<%- console.log(@numberOfGames()) %>
+
+  <div class="cards clearfix">
+    <% for game in @recentlyPlayed.games[0..@numberOfGames()-1]: %>
+      <%- @cardFor(game) %>
+    <% end %>
+  </div>
+
+</div>

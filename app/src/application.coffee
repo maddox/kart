@@ -1,6 +1,7 @@
 eco = require "eco"
 fs  = require "fs"
 
+Home = require './controllers/home'
 Platforms = require './controllers/platforms'
 Collections = require './controllers/collections'
 CollectionPicker = require './controllers/collectionPicker'
@@ -18,13 +19,14 @@ class App extends Spine.Stack
     'click .settings-button': 'toggleSettings'
 
   controllers:
+    home: Home
     platforms: Platforms
     collections: Collections
     collectionPicker: CollectionPicker
     games: Games
     settings: Settings
 
-  default: 'platforms'
+  default: 'home'
 
   constructor: ->
     super
@@ -43,7 +45,7 @@ class App extends Spine.Stack
 
   back: ->
     return if @history.length == 0
-    
+
     controller = @history.pop()
     controller.active()
 

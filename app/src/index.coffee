@@ -18,6 +18,7 @@ App.Collection = require './models/collection'
 App.Settings = require './models/settings'
 App.RecentlyPlayed = require './models/recentlyPlayed'
 App.Favorites = require './models/favorites'
+App.RetroArch = require './models/retroArch'
 
 $ =>
   $('body').addClass 'loaded'

@@ -1,14 +1,14 @@
 <section class="browse clearfix">
 
-  <div class="square">
+  <div class="square platforms">
     Platforms
   </div>
 
-  <div class="square">
+  <div class="square collections">
     Collections
   </div>
 
-  <div class="square">
+  <div class="square favorites">
     Favorites
   </div>
 

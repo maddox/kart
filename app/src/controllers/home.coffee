@@ -15,6 +15,8 @@ class Home extends Spine.Controller
   constructor: ->
     super
 
+    @active @update
+
     @settings = new App.Settings
     @recentlyPlayed = new App.RecentlyPlayed
     @favorites = new App.Favorites

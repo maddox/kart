@@ -3,6 +3,7 @@ Spine._ = require 'underscore'
 
 fsUtils = require '../lib/fs-utils'
 path = require 'path'
+fs = require 'fs'
 
 class Collection extends Spine.Model
   @configure "Collection", "path"
@@ -41,7 +42,9 @@ class Collection extends Spine.Model
 
   loadFromFile: ->
     if fsUtils.exists(@filePath())
-      data = require @filePath()
+      data = JSON.parse(fs.readFileSync(@filePath(), 'utf8'))
+      @games = []
+
       for gameBlob in data['games']
         romPath = path.join(@settings.romsPath(), gameBlob['gameConsole'], gameBlob['filename'])
         if fsUtils.exists(romPath)

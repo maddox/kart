@@ -22,10 +22,12 @@ class Home extends Spine.Controller
 
     @currentlySelectedItem = null
 
-    @render()
-
   render: ->
     @html @view 'main/home', @
+
+  update: ->
+    @recentlyPlayed.load()
+    @render()
 
   cardFor: (game) ->
     data = {"imagePath": game.imagePath(), "title": game.name(), "faved": @favorites.isFaved(game)}

@@ -21,6 +21,7 @@ class RecentlyPlayed extends Spine.Model
     if @filePath() && fsUtils.exists(@filePath())
       data = JSON.parse(fs.readFileSync(@filePath(), 'utf8'))
       @games = []
+      
       for gameBlob in data['games']
         romPath = path.join(@settings.romsPath(), gameBlob['gameConsole'], gameBlob['filename'])
         if fsUtils.exists(romPath)

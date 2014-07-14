@@ -21,6 +21,7 @@ class RecentlyPlayed extends Spine.Model
       @data = require @filePath()
 
       for gameBlob in @data['games']
+      @games = []
         romPath = path.join(@settings.romsPath(), gameBlob['gameConsole'], gameBlob['filename'])
         if fsUtils.exists(romPath)
           gameConsole = new App.GameConsole(prefix: gameBlob['gameConsole'])

@@ -5,6 +5,10 @@ $      = Spine.$
 class Home extends Spine.Controller
   className: 'app-home'
 
+  elements:
+    '.square': 'squares'
+    '.card': 'cards'
+
   events:
     'click .card': 'launchGame'
     'click .platforms': 'loadPlatforms'

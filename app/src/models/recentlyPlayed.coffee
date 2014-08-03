@@ -3,6 +3,7 @@ Spine._ = require 'underscore'
 
 fsUtils = require '../lib/fs-utils'
 path = require 'path'
+fs = require 'fs'
 
 class RecentlyPlayed extends Spine.Model
   @configure "RecentlyPlayed"
@@ -18,9 +19,10 @@ class RecentlyPlayed extends Spine.Model
 
   load: ->
     if @filePath() && fsUtils.exists(@filePath())
-      @data = require @filePath()
-
-      for gameBlob in @data['games']
+      data = JSON.parse(fs.readFileSync(@filePath(), 'utf8'))
+      @games = []
+      
+      for gameBlob in data['games']
         romPath = path.join(@settings.romsPath(), gameBlob['gameConsole'], gameBlob['filename'])
         if fsUtils.exists(romPath)
           gameConsole = new App.GameConsole(prefix: gameBlob['gameConsole'])

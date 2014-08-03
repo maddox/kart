@@ -20,87 +20,83 @@ body{
 }
 
 
-.cards{
+.card{
+  float: left;
+  margin: 0 2% 2% 0;
+  width: 23%;
 
-  .card{
-    float: left;
-    margin: 0 2% 2% 0;
-    width: 23%;
+  .overlay{
+    border: 8px solid transparent;
+    transition: 0.05s;
 
-    .overlay{
-      border: 8px solid transparent;
-      transition: 0.05s;
+    .marquee{
+      position: relative;
+      opacity: 0;
+      margin: 0;
+      padding: 8px 0 0 0;
+      background-color: white;
+      font-weight: bold;
+      font-size: 14px;
+      color: #313131;
+      transition: opacity 0.05s;
+      overflow: hidden;
 
-      .marquee{
-        position: relative;
-        opacity: 0;
-        margin: 0;
-        padding: 8px 0 0 0;
-        background-color: white;
-        font-weight: bold;
-        font-size: 14px;
-        color: #313131;
-        transition: opacity 0.05s;
-        overflow: hidden;
+    .fade{
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+      width: 60px;
+      background: url(images/fade.png);
+    }
 
-      .fade{
-        position: absolute;
-        right: 0;
-        top: 0;
-        height: 100%;
-        width: 60px;
-        background: url(images/fade.png);
-      }
+    .title{
+      display: block;
+    }
 
-      .title{
-        display: block;
-      }
+    .game-settings{
+      display: none;
 
-      .game-settings{
-        display: none;
-
-        .fa:hover{
-          color: #717171;
-        }
-
-      }
-
-      }
-
-      img {
-        display: block;
-        border-radius: 3px;
-        width: 100%;
-        box-shadow: 0 8px 6px -6px black;
+      .fa:hover{
+        color: #717171;
       }
 
     }
 
-    &.selected {
-      .overlay{
-        border-color: #ffffff;
-        background-color: #ffffff;
-        -webkit-transform:scale(1.3);
-        box-shadow: 0 8px 6px -6px black;
+    }
 
-        .marquee{
-          opacity: 1;
-          height: auto;
-          display: block;
-        }
-
-        img{
-          border-radius: 1px;
-          box-shadow: none;
-        }
-      }
+    img {
+      display: block;
+      border-radius: 3px;
+      width: 100%;
+      box-shadow: 0 8px 6px -6px black;
     }
 
   }
+
+  &.selected {
+    .overlay{
+      border-color: #ffffff;
+      background-color: #ffffff;
+      -webkit-transform:scale(1.3);
+      box-shadow: 0 8px 6px -6px black;
+
+      .marquee{
+        opacity: 1;
+        height: auto;
+        display: block;
+      }
+
+      img{
+        border-radius: 1px;
+        box-shadow: none;
+      }
+    }
+  }
+
 }
 
-
-.app-games .cards .overlay .marquee:hover{
+.game-card .overlay .marquee:hover{
   .title{
     display: none;
   }

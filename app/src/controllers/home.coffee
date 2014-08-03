@@ -2,60 +2,142 @@ _ = require 'underscore'
 Spine._ = require 'underscore'
 $      = Spine.$
 
-os = require 'os'
-
-Cards = require './cards'
-
-class Home extends Cards
+class Home extends Spine.Controller
   className: 'app-home'
 
   elements:
-    '.header': 'header'
+    '.square': 'squares'
+    '.card': 'cards'
 
-  build: ->
+  events:
+    'click .card': 'cardClicked'
+    'click .square': 'squareClicked'
+    'mouseover .card': 'mouseover'
+    'mouseleave .card': 'mouseleave'
+    'mouseover .square': 'mouseover'
+    'mouseleave .square': 'mouseleave'
+
+  constructor: ->
     super
 
-    new App.RecentlyPlayed
+    @active @update
 
-    @gameConsoles = []
+    @settings = new App.Settings
+    @recentlyPlayed = new App.RecentlyPlayed
+    @favorites = new App.Favorites
+    @retroArch = new App.RetroArch
 
-    if @settings.romsPath()
-      ## platform dependent sections
-      switch os.platform()
-        when "darwin"
-          @gameConsoles.push new App.GameConsole(prefix: "mac", extensions: ["lnk", "url"], name: "Steam")
-        when "win32"
-          @gameConsoles.push new App.GameConsole(prefix: "pc", extensions: ["lnk", "url"], name: "Steam")
-
-      @gameConsoles.push new App.GameConsole(prefix: "arcade", extensions: ["zip"], name: "Arcade")
-      @gameConsoles.push new App.GameConsole(prefix: "nes", extensions: ["nes", "zip"], name: "Nintendo Entertainment System")
-      @gameConsoles.push new App.GameConsole(prefix: "snes", extensions: ["smc", "zip"], name: "Super Nintendo")
-      @gameConsoles.push new App.GameConsole(prefix: "neogeo", extensions: ["zip"], name: "Neo Geo")
-      @gameConsoles.push new App.GameConsole(prefix: "n64", extensions: ["z64", "zip"], name: "Nintendo 64")
-      @gameConsoles.push new App.GameConsole(prefix: "gb", extensions: ["gb", "gbc", "zip"], name: "GameBoy")
-      @gameConsoles.push new App.GameConsole(prefix: "gba", extensions: ["gba", "zip"], name: "GameBoy Advance")
-      @gameConsoles.push new App.GameConsole(prefix: "megadrive", extensions: ["bin", "zip"], name: "Sega Genesis")
-      @gameConsoles.push new App.GameConsole(prefix: "psx", extensions: ["cue", "img"], name: "Sony Playstation")
-
-      @gameConsoles = _.filter @gameConsoles, (gameConsole) ->
-        gameConsole.imageExists()
+    @currentlySelectedItem = null
 
   render: ->
-    super()
-    @header.append('<p class="settings-button btn">Settings</p>')
+    @html @view 'main/home', @
 
-  showGames: (gameConsole) ->
-    app.showGames(gameConsole)
+    @selectItem(@squares.first())
 
-  numberOfItems: ->
-    @gameConsoles.length
+  update: ->
+    @recentlyPlayed.load()
+    @render()
 
-  didPickCardAt: (index) ->
-    @showGames(@gameConsoles[index])
-
-  cardFor: (index) ->
-    gameConsole = @gameConsoles[index]
-    data = {"imagePath": gameConsole.imagePath(), "title": gameConsole.name}
+  cardFor: (game) ->
+    data = {"imagePath": game.imagePath(), "title": game.name()}
     @view 'main/_card', data
+
+  numberOfGames: ->
+    if @settings.aspect() == '16x9' then 4 else 3
+
+  launchGame: (item) ->
+    @retroArch.launchGame(@recentlyPlayed.games[item.index()])
+
+  loadPlatforms: ->
+    app.showPlatforms()
+
+  loadCollections: ->
+    app.showCollections()
+
+  loadFavorites: ->
+    app.showFavorites()
+
+  pickItem: (item) ->
+    if item.hasClass("card")
+      @launchGame(item)
+    else
+      if item.hasClass("platforms")
+        @loadPlatforms()
+      else if item.hasClass("collections")
+        @loadCollections()
+      else if item.hasClass("favorites")
+        @loadFavorites()
+
+
+  selectItem: (item) ->
+    @deselectItem(@currentlySelectedItem) if @currentlySelectedItem
+    item.addClass('selected')
+    @currentlySelectedItem = item
+
+  deselectItem: (element) ->
+    $(element).removeClass('selected')
+
+  focusGames: (item) ->
+    @selectItem($('.card').first())
+
+  focusSquares: (item) ->
+    @selectItem($('.square').first())
+
+  goUp: () ->
+    @focusSquares() if @currentlySelectedItem.hasClass('card')
+
+  goDown: () ->
+    @focusGames() if @currentlySelectedItem.hasClass('square')
+
+  goRight: () ->
+    index = @currentlySelectedItem.index()
+
+    if @currentlySelectedItem.hasClass('card')
+      nextItem = @cards[index+1]
+    else
+      nextItem = @squares[index+1]
+
+    @selectItem($(nextItem)) if nextItem
+
+  goLeft: () ->
+    index = @currentlySelectedItem.index()
+
+    if @currentlySelectedItem.hasClass('card')
+      nextItem = @cards[index-1]
+    else
+      nextItem = @squares[index-1]
+
+    @selectItem($(nextItem)) if nextItem
+
+  cardClicked: (e) ->
+    @pickItem($(e.currentTarget))
+
+  squareClicked: (e) ->
+    @pickItem($(e.currentTarget))
+
+  mouseover: (e) ->
+    @selectItem($(e.currentTarget))
+
+  mouseleave: (e) ->
+    @deselectItem($(e.currentTarget))
+
+  keyboardNav: (e) ->
+
+    switch e.keyCode
+      when KeyCodes.up
+        @goUp()
+        e.preventDefault()
+      when KeyCodes.down
+        @goDown()
+        e.preventDefault()
+      when KeyCodes.left
+        @goLeft()
+        e.preventDefault()
+      when KeyCodes.right
+        @goRight()
+        e.preventDefault()
+      when KeyCodes.enter
+        @pickItem(@currentlySelectedItem)
+        e.preventDefault()
 
 module.exports = Home

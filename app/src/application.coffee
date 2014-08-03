@@ -4,6 +4,7 @@ fs  = require "fs"
 Home = require './controllers/home'
 Platforms = require './controllers/platforms'
 Collections = require './controllers/collections'
+Favorites = require './controllers/favorites'
 CollectionPicker = require './controllers/collectionPicker'
 Games = require './controllers/games'
 Settings = require './controllers/settings'
@@ -22,6 +23,7 @@ class App extends Spine.Stack
     home: Home
     platforms: Platforms
     collections: Collections
+    favorites: Favorites
     collectionPicker: CollectionPicker
     games: Games
     settings: Settings
@@ -60,6 +62,10 @@ class App extends Spine.Stack
   showCollections: ->
     @collections.update()
     @goTo(@collections)
+
+  showFavorites: ->
+    @favorites.update()
+    @goTo(@favorites)
 
   showCollectionPicker: (game) ->
     @collectionPicker.show(game)

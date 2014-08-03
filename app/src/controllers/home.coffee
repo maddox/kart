@@ -54,6 +54,9 @@ class Home extends Spine.Controller
   loadCollections: ->
     app.showCollections()
 
+  loadFavorites: ->
+    app.showFavorites()
+
   pickItem: (item) ->
     if item.hasClass("card")
       @launchGame(item)
@@ -62,6 +65,8 @@ class Home extends Spine.Controller
         @loadPlatforms()
       else if item.hasClass("collections")
         @loadCollections()
+      else if item.hasClass("favorites")
+        @loadFavorites()
 
 
   selectItem: (item) ->

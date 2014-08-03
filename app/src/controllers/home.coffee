@@ -57,20 +57,68 @@ class Home extends Spine.Controller
     card = $(e.currentTarget)
     app.showCollections()
 
-  selectItem: (element) ->
-    item = $(element)
-    @deselectItem(item) if @currentlySelectedItem
+  selectItem: (item) ->
+    @deselectItem(@currentlySelectedItem) if @currentlySelectedItem
     item.addClass('selected')
     @currentlySelectedItem = item
 
   deselectItem: (element) ->
     $(element).removeClass('selected')
 
+  focusGames: (item) ->
+    @selectItem($('.card').first())
+
+  focusSquares: (item) ->
+    @selectItem($('.square').first())
+
+  goUp: () ->
+    @focusSquares() if @currentlySelectedItem.hasClass('card')
+
+  goDown: () ->
+    @focusGames() if @currentlySelectedItem.hasClass('square')
+
+  goRight: () ->
+    index = @currentlySelectedItem.index()
+
+    if @currentlySelectedItem.hasClass('card')
+      nextItem = @cards[index+1]
+    else
+      nextItem = @squares[index+1]
+
+    @selectItem($(nextItem)) if nextItem
+
+  goLeft: () ->
+    index = @currentlySelectedItem.index()
+
+    if @currentlySelectedItem.hasClass('card')
+      nextItem = @cards[index-1]
+    else
+      nextItem = @squares[index-1]
+
+    @selectItem($(nextItem)) if nextItem
+
   mouseover: (e) ->
-    @selectItem(e.currentTarget)
+    @selectItem($(e.currentTarget))
 
   mouseleave: (e) ->
-    @deselectItem(e.currentTarget)
+    @deselectItem($(e.currentTarget))
 
+  keyboardNav: (e) ->
+
+    switch e.keyCode
+      when KeyCodes.up
+        @goUp()
+        e.preventDefault()
+      when KeyCodes.down
+        @goDown()
+        e.preventDefault()
+      when KeyCodes.left
+        @goLeft()
+        e.preventDefault()
+      when KeyCodes.right
+        @goRight()
+        e.preventDefault()
+      when KeyCodes.enter
+        e.preventDefault()
 
 module.exports = Home

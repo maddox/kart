@@ -8,4 +8,9 @@ class Favorites extends Games
 
     @games = @favorites.games if @favorites
 
+  toggleFavorite: (e) ->
+    super
+
+    @update()
+
 module.exports = Favorites

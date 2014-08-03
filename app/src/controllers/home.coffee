@@ -110,15 +110,10 @@ class Home extends Spine.Controller
     @selectItem($(nextItem)) if nextItem
 
   cardClicked: (e) ->
-    @launchGame($(e.currentTarget))
+    @pickItem($(e.currentTarget))
 
   squareClicked: (e) ->
-    square = $(e.currentTarget)
-
-    if square.hasClass("platforms")
-      @loadPlatforms()
-    else if square.hasClass("collections")
-      @loadCollections()
+    @pickItem($(e.currentTarget))
 
   mouseover: (e) ->
     @selectItem($(e.currentTarget))

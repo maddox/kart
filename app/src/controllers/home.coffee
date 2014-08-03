@@ -30,6 +30,7 @@ class Home extends Spine.Controller
 
   render: ->
     @html @view 'main/home', @
+    @selectItem(@squares.first())
 
   update: ->
     @recentlyPlayed.load()

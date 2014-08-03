@@ -10,9 +10,8 @@ class Home extends Spine.Controller
     '.card': 'cards'
 
   events:
-    'click .card': 'launchGame'
-    'click .platforms': 'loadPlatforms'
-    'click .collections': 'loadCollections'
+    'click .card': 'cardClicked'
+    'click .square': 'squareClicked'
     'mouseover .card': 'mouseover'
     'mouseleave .card': 'mouseleave'
     'mouseover .square': 'mouseover'
@@ -32,6 +31,7 @@ class Home extends Spine.Controller
 
   render: ->
     @html @view 'main/home', @
+
     @selectItem(@squares.first())
 
   update: ->
@@ -45,17 +45,24 @@ class Home extends Spine.Controller
   numberOfGames: ->
     if @settings.aspect() == '16x9' then 4 else 3
 
-  launchGame: (e) ->
-    card = $(e.currentTarget)
-    @retroArch.launchGame(@recentlyPlayed.games[card.index()])
+  launchGame: (item) ->
+    @retroArch.launchGame(@recentlyPlayed.games[item.index()])
 
-  loadPlatforms: (e) ->
-    card = $(e.currentTarget)
+  loadPlatforms: ->
     app.showPlatforms()
 
-  loadCollections: (e) ->
-    card = $(e.currentTarget)
+  loadCollections: ->
     app.showCollections()
+
+  pickItem: (item) ->
+    if item.hasClass("card")
+      @launchGame(item)
+    else
+      if item.hasClass("platforms")
+        @loadPlatforms()
+      else if item.hasClass("collections")
+        @loadCollections()
+
 
   selectItem: (item) ->
     @deselectItem(@currentlySelectedItem) if @currentlySelectedItem
@@ -97,6 +104,17 @@ class Home extends Spine.Controller
 
     @selectItem($(nextItem)) if nextItem
 
+  cardClicked: (e) ->
+    @launchGame($(e.currentTarget))
+
+  squareClicked: (e) ->
+    square = $(e.currentTarget)
+
+    if square.hasClass("platforms")
+      @loadPlatforms()
+    else if square.hasClass("collections")
+      @loadCollections()
+
   mouseover: (e) ->
     @selectItem($(e.currentTarget))
 
@@ -119,6 +137,7 @@ class Home extends Spine.Controller
         @goRight()
         e.preventDefault()
       when KeyCodes.enter
+        @pickItem(@currentlySelectedItem)
         e.preventDefault()
 
 module.exports = Home

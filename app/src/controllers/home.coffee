@@ -15,6 +15,8 @@ class Home extends Spine.Controller
     'click .collections': 'loadCollections'
     'mouseover .card': 'mouseover'
     'mouseleave .card': 'mouseleave'
+    'mouseover .square': 'mouseover'
+    'mouseleave .square': 'mouseleave'
 
   constructor: ->
     super

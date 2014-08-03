@@ -39,8 +39,8 @@ class Home extends Spine.Controller
     @render()
 
   cardFor: (game) ->
-    data = {"imagePath": game.imagePath(), "title": game.name(), "faved": @favorites.isFaved(game)}
-    @view 'main/_gameCard', data
+    data = {"imagePath": game.imagePath(), "title": game.name()}
+    @view 'main/_card', data
 
   numberOfGames: ->
     if @settings.aspect() == '16x9' then 4 else 3

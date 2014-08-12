@@ -8,6 +8,7 @@ class Home extends Spine.Controller
   elements:
     '.square': 'squares'
     '.card': 'cards'
+    'bodys': 'body'
 
   events:
     'click .card': 'cardClicked'
@@ -35,6 +36,11 @@ class Home extends Spine.Controller
     @html @view 'main/home', @
 
     @selectItem(@squares.first())
+
+    if @settings.aspect() == '16x9'
+      $('body').removeClass('fourbythree')
+    else if @settings.aspect() == '4x3'
+      $('body').addClass('fourbythree')
 
   update: ->
     @recentlyPlayed.load()

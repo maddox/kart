@@ -37,15 +37,17 @@ class Home extends Spine.Controller
 
     @selectItem(@squares.first())
 
+    body = $('body')
+
     if @settings.retroMode()
-      $('body').addClass('retro')
+      body.addClass('retro')
     else
-      $('body').removeClass('retro')
+      body.removeClass('retro')
 
     if @settings.aspect() == '16x9'
-      $('body').removeClass('fourbythree')
+      body.removeClass('fourbythree')
     else if @settings.aspect() == '4x3'
-      $('body').addClass('fourbythree')
+      body.addClass('fourbythree')
 
   update: ->
     @recentlyPlayed.load()

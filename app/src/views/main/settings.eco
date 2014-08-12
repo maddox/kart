@@ -26,4 +26,8 @@
     </select>
   </div>
 
+  <div class="field clearfix">
+    <input type="checkbox" id="retro-mode" name="retro-mode" <%= "checked='checked'" if @settings.retroMode() %>> <span class="label">Retro Mode</span>
+  </div>
+
 </div>

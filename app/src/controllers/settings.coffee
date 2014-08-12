@@ -11,11 +11,13 @@ class Settings extends Spine.Controller
   elements:
     '#retroarch_path': 'retroarchPathInput'
     '#roms_path': 'romsPathInput'
+    '#retro_mode': 'romsPathInput'
 
   events:
     'click #retroarch_path_button': 'browseRetroarchPath'
     'click #roms_path_button': 'browseRomsPath'
     'change #aspect': 'setAspect'
+    'change #retro-mode': 'toggleRetroMode'
     'click .settings-button': 'back'
 
   constructor: ->
@@ -47,6 +49,9 @@ class Settings extends Spine.Controller
 
   setAspect: (e) ->
     @settings.setAspect($(e.currentTarget).val())
+
+  toggleRetroMode: (e) ->
+    @settings.setRetroMode($(e.currentTarget).is(':checked'))
 
   back: (e) ->
     app.back();

@@ -37,6 +37,11 @@ class Home extends Spine.Controller
 
     @selectItem(@squares.first())
 
+    if @settings.retroMode()
+      $('body').addClass('retro')
+    else
+      $('body').removeClass('retro')
+
     if @settings.aspect() == '16x9'
       $('body').removeClass('fourbythree')
     else if @settings.aspect() == '4x3'

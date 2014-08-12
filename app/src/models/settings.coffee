@@ -31,4 +31,10 @@ class Settings extends Spine.Model
   setAspect: (aspect) ->
     @writeSetting('aspect', aspect)
 
+  retroMode: ->
+    (@readSetting('retroMode') || false) == "true"
+
+  setRetroMode: (retroMode) ->
+    @writeSetting('retroMode', retroMode)
+
 module.exports = Settings

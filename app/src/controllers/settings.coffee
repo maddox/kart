@@ -16,6 +16,7 @@ class Settings extends Spine.Controller
     'click #retroarch_path_button': 'browseRetroarchPath'
     'click #roms_path_button': 'browseRomsPath'
     'change #aspect': 'setAspect'
+    'click .settings-button': 'back'
 
   constructor: ->
     super
@@ -47,6 +48,9 @@ class Settings extends Spine.Controller
   setAspect: (e) ->
     @settings.setAspect($(e.currentTarget).val())
 
+  back: (e) ->
+    app.back();
+    
   keyboardNav: (e) ->
 
     switch e.keyCode

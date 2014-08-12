@@ -38,10 +38,6 @@ class Platforms extends Cards
       @gameConsoles = _.filter @gameConsoles, (gameConsole) ->
         gameConsole.imageExists()
 
-  render: ->
-    super()
-    @header.append('<p class="settings-button btn">Settings</p>')
-
   showGames: (gameConsole) ->
     app.showGames(gameConsole)
 

@@ -1,3 +1,7 @@
+<div class="header">
+  <p class="settings-button btn">Settings</p>
+</div>
+
 <section class="browse clearfix">
 
   <div class="square platforms">

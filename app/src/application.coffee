@@ -16,9 +16,6 @@ Spine.Controller.prototype.view = (path, data) ->
 class App extends Spine.Stack
   className: 'stack root'
 
-  events:
-    'click .settings-button': 'toggleSettings'
-
   controllers:
     home: Home
     platforms: Platforms
@@ -70,11 +67,8 @@ class App extends Spine.Stack
   showCollectionPicker: (game) ->
     @collectionPicker.show(game)
 
-  toggleSettings: ->
-    if @settings.isActive()
-      @showHome()
-    else
-      @settings.active()
+  showSettings: ->
+    @goTo(@settings)
 
   showGames: (collection) ->
     @games.collection = collection

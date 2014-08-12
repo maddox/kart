@@ -16,6 +16,8 @@ class Home extends Spine.Controller
     'mouseleave .card': 'mouseleave'
     'mouseover .square': 'mouseover'
     'mouseleave .square': 'mouseleave'
+    'click .settings-button': 'showSettings'
+
 
   constructor: ->
     super
@@ -47,6 +49,9 @@ class Home extends Spine.Controller
 
   launchGame: (item) ->
     @retroArch.launchGame(@recentlyPlayed.games[item.index()])
+
+  showSettings: ->
+    app.showSettings()
 
   loadPlatforms: ->
     app.showPlatforms()

@@ -12,7 +12,8 @@
     "less": "git://github.com/nathansobo/less.js.git",
     "underscore": "1.4.4",
     "less-cache": "~0.12",
-    "font-awesome": "4.0.3"
+    "font-awesome": "4.0.3",
+    "image-size": "0.3.2"
   },
   "devDependencies": {
   }

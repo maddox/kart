@@ -2,6 +2,11 @@ _ = require 'underscore'
 Spine._ = require 'underscore'
 $      = Spine.$
 
+fsUtils = require '../lib/fs-utils'
+path = require 'path'
+querystring = require("querystring");
+sizeOf = require('image-size');
+
 class Home extends Spine.Controller
   className: 'app-home'
 
@@ -37,15 +42,44 @@ class Home extends Spine.Controller
 
     @selectItem(@squares.first())
 
-    if @settings.retroMode()
-      $('body').addClass('retro')
+    body = $('body')
+
+    # set the background
+    custom_background_path = path.join(@settings.romsPath(), 'background.png')
+    if fsUtils.exists(custom_background_path)
+      @setBackgroundImage(custom_background_path)
     else
-      $('body').removeClass('retro')
+      @setBackgroundImage(path.join(__dirname, '../../images/bg-texture.png'))
+
+    if @settings.retroMode()
+      body.addClass('retro')
+    else
+      body.removeClass('retro')
 
     if @settings.aspect() == '16x9'
-      $('body').removeClass('fourbythree')
+      body.removeClass('fourbythree')
     else if @settings.aspect() == '4x3'
-      $('body').addClass('fourbythree')
+      body.addClass('fourbythree')
+
+  setBackgroundImage: (imagePath) ->
+    body = $('body')
+    imagePath = path.resolve(imagePath)
+    imageValue = "url('file://#{imagePath.replace(/\s/g, '%20')}')"
+
+    return if body.css('background-image').replace(/'/g, '') == imageValue.replace(/'/g, '')
+
+    dimensions = sizeOf(imagePath);
+
+    if dimensions.width < 600
+      backgroundRepeat = "repeat"
+      backgroundSize = "auto"
+    else
+      backgroundRepeat = "no-repeat"
+      backgroundSize = "cover"
+
+    body.css('background-repeat', backgroundSize)
+    body.css('background-size', backgroundSize)
+    body.css('background-image', imageValue)
 
   update: ->
     @recentlyPlayed.load()

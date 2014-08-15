@@ -52,4 +52,5 @@ module.exports = (grunt) ->
   grunt.loadTasks('tasks')
 
   grunt.registerTask('bootstrap', ['download-atom-shell', 'symlink:app', 'generate-plist', 'shell:app-apm-install'])
+  grunt.registerTask('bootstrap-win', ['download-atom-shell', 'shell:app-apm-install'])
   grunt.registerTask('build', ['download-atom-shell', 'shell:app-apm-install', 'copy:app', 'generate-plist'])

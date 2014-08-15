@@ -1,5 +1,6 @@
 fs = require 'fs'
 path = require 'path'
+os = require 'os'
 
 packageJson = require './package.json'
 
@@ -7,11 +8,16 @@ module.exports = (grunt) ->
   appName = "#{packageJson.name}.app"
   [major, minor, patch] = packageJson.version.split('.')
 
+  if process.platform is 'darwin'
+    atomAppDir = path.join('atom-shell', 'Atom.app', 'Contents', 'Resources', 'app')
+  else
+    atomAppDir = path.join('atom-shell', 'resources', 'app')
+
   grunt.initConfig
     pkg: grunt.file.readJSON('package.json')
     symlink:
       app:
-        link: path.join('atom-shell', 'Atom.app', 'Contents', 'Resources', 'app')
+        link: atomAppDir
         target: path.join('..', '..', '..', '..', 'app')
         options:
           type: 'dir'
@@ -21,7 +27,7 @@ module.exports = (grunt) ->
     'download-atom-shell':
       version: packageJson.atomShellVersion
       outputDir: path.join('atom-shell')
-      downloadDir: '/tmp/downloaded-atom-shell'
+      downloadDir: path.join(os.tmpdir(), 'downloaded-atom-shell')
       rebuild: true  # rebuild native modules after atom-shell is updated
 
     shell:

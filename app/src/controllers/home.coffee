@@ -64,7 +64,8 @@ class Home extends Spine.Controller
   setBackgroundImage: (imagePath) ->
     body = $('body')
     imagePath = path.resolve(imagePath)
-    imageValue = "url('file://#{imagePath.replace(/\s/g, '%20')}')"
+    imagePath = imagePath.replace(/\\/g, '\\\\') if path.sep is '\\'
+    imageValue = "url('file://#{imagePath}')"
 
     return if body.css('background-image').replace(/'/g, '') == imageValue.replace(/'/g, '')
 

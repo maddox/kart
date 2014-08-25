@@ -14,6 +14,10 @@
         module.paths.push(path.join(__dirname, '..', '..', 'app'));
         module.paths.push(path.join(__dirname, '..', '..', 'app', 'node_modules'));
 
+        // Module paths for running atom-shell directly against the src dir
+        module.paths.push(path.join(__dirname));
+        module.paths.push(path.join(__dirname, 'node_modules'));
+
         require('coffee-script');
         require('coffee-cache').setCacheDir(path.join(__dirname, 'coffee-cache'));
         Object.defineProperty(require.extensions, '.coffee', {

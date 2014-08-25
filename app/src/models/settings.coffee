@@ -11,7 +11,7 @@ class Settings extends Spine.Model
     window.localStorage.setItem(key, value)
 
   readSetting: (key) ->
-    window.localStorage.getItem(key)
+    window.localStorage.getItem(key) || ''
 
   retroarchPath: ->
     @readSetting('retroarchPath')

@@ -10,6 +10,7 @@ class Games extends Cards
   events:
     'click .card .overlay .game-settings .add-collection': 'addToCollection'
     'click .card .overlay .game-settings .toggle-favorite': 'toggleFavorite'
+    'click .card .overlay .game-settings .edit-art': 'editArt'
 
   constructor: ->
     super
@@ -37,6 +38,13 @@ class Games extends Cards
     game = @games[index]
     data = {"imagePath": game.imagePath(), "title": game.name(), "faved": @favorites.isFaved(game)}
     @view 'main/_gameCard', data
+
+  editArt: (e) ->
+    e.stopPropagation()
+    card = $(e.currentTarget).parents('.card')
+    index = card.index() + (@page*@perPage)
+
+    app.showArtEditor(@games[index])
 
   addToCollection: (e) ->
     e.stopPropagation()

@@ -27,6 +27,9 @@ class App extends Spine.Stack
 
   default: 'home'
 
+  events:
+    'click .settings-button': 'toggleSettings'
+
   constructor: ->
     super
 

@@ -23,7 +23,11 @@ class Games extends Cards
   build: ->
     super
 
-    @games = @collection.games if @collection
+    if @collection
+      @games = @collection.games
+
+      for game in @games
+        game.bind("save", @updateGameCard)
 
   launchGame: (game) ->
     @retroArch.launchGame(game)

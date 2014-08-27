@@ -110,16 +110,16 @@ module.exports =
     fs.readFileSync(filePath, 'utf8')
 
   # Open, write, flush, and close a file, writing the given content.
-  writeSync: (filePath, content) ->
+  writeSync: (filePath, content, contentType='binary') ->
     mkdirp.sync(path.dirname(filePath))
-    fs.writeFileSync(filePath, content)
+    fs.writeFileSync(filePath, content, contentType)
 
-  write: (filePath, content, callback) ->
+  write: (filePath, content, contentType, callback) ->
     mkdirp path.dirname(filePath), (error) ->
       if error?
         callback?(error)
       else
-        fs.writeFile(filePath, content, callback)
+        fs.writeFile(filePath, content, contentType, callback)
 
   copy: (sourcePath, destinationPath, done) ->
     mkdirp path.dirname(destinationPath), (error) ->

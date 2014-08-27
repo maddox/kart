@@ -1,0 +1,17 @@
+<div class="control-info">
+  <div class="control-item">
+    <img src="images/control-info/b-button.svg" /> Back
+  </div>
+
+  <div class="control-item">
+    <img src="images/control-info/a-button.svg" /> Select
+  </div>
+
+  <div class="control-item">
+    <img src="images/control-info/d-pad.svg" /> Choose
+  </div>
+
+  <div class="control-item">
+    <img src="images/control-info/start-select.svg" class="start-select" /> Quit Game
+  </div>
+</div>

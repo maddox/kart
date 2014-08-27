@@ -31,6 +31,8 @@ class App extends Spine.Stack
     super
 
     @history = []
+    @el.append(@view('main/_controlInfo'))
+    $('.control-info').show()
 
   activeController: ->
     for controller in @manager.controllers

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="97px" height="97px" viewBox="0 0 97 97" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.0.4 (8054) - http://www.bohemiancoding.com/sketch -->
+    <title>buttons 2</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="D-Pad" sketch:type="MSLayerGroup" transform="translate(1.000000, 1.000000)">
+            <path d="M29.8461538,30 L29.8461538,5.9966931 C29.8461538,2.69013683 32.5310209,0 35.8429723,0 L58.8493354,0 C62.1578783,0 64.8461538,2.68481095 64.8461538,5.9966931 L64.8461538,30 L88.8313612,30 C92.1379175,30 94.8280543,32.6848671 94.8280543,35.9968185 L94.8280543,59.0031815 C94.8280543,62.3117245 92.1432433,65 88.8313612,65 L64.8461538,65 L64.8461538,89.0033069 C64.8461538,92.3098632 62.1612868,95 58.8493354,95 L35.8429723,95 C32.5344293,95 29.8461538,92.3151891 29.8461538,89.0033069 L29.8461538,65 L5.82474739,65 C2.51819113,65 -0.171945701,62.3151329 -0.171945701,59.0031815 L-0.171945701,35.9968185 C-0.171945701,32.6882755 2.51286525,30 5.82474739,30 L29.8461538,30 Z" id="Rectangle-3" fill="#363636" sketch:type="MSShapeGroup"></path>
+            <polygon id="Triangle-1" fill="#CAC9C9" sketch:type="MSShapeGroup" points="48 7 54 19 42 19 "></polygon>
+            <path d="M41,77 L53,77 L47,89 L41,77 Z" id="Triangle-2" fill="#CAC9C9" sketch:type="MSShapeGroup"></path>
+            <path d="M76.1621094,42.2402344 L88.1621094,42.2402344 L82.1621094,54.2402344 L76.1621094,42.2402344 Z" id="Triangle-2" fill="#CAC9C9" sketch:type="MSShapeGroup" transform="translate(82.162109, 48.240234) rotate(-90.000000) translate(-82.162109, -48.240234) "></path>
+            <path d="M7.83789062,41.7265625 L19.8378906,41.7265625 L13.8378906,53.7265625 L7.83789062,41.7265625 Z" id="Triangle-2" fill="#CAC9C9" sketch:type="MSShapeGroup" transform="translate(13.837891, 47.726562) rotate(-270.000000) translate(-13.837891, -47.726562) "></path>
+            <circle id="Oval-3" fill="#CAC9C9" sketch:type="MSShapeGroup" cx="48" cy="48" r="6"></circle>
+        </g>
+    </g>
+</svg>

@@ -6,6 +6,7 @@ Platforms = require './controllers/platforms'
 Collections = require './controllers/collections'
 Favorites = require './controllers/favorites'
 CollectionPicker = require './controllers/collectionPicker'
+ArtEditor = require './controllers/artEditor'
 Games = require './controllers/games'
 Settings = require './controllers/settings'
 
@@ -22,6 +23,7 @@ class App extends Spine.Stack
     collections: Collections
     favorites: Favorites
     collectionPicker: CollectionPicker
+    artEditor: ArtEditor
     games: Games
     settings: Settings
 
@@ -71,6 +73,9 @@ class App extends Spine.Stack
 
   showCollectionPicker: (game) ->
     @collectionPicker.show(game)
+
+  showArtEditor: (game) ->
+    @artEditor.show(game)
 
   toggleSettings: ->
     if @settings.isActive() then @back() else @goTo(@settings)

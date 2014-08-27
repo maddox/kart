@@ -29,6 +29,11 @@ class Games extends Cards
       for game in @games
         game.bind("save", @updateGameCard)
 
+  updateGameCard: (game) =>
+    index = @games.indexOf(game)
+    cardToReplace = @cards[index]
+    $(cardToReplace).find('img').attr('src', game.imagePath())
+
   launchGame: (game) ->
     @retroArch.launchGame(game)
 

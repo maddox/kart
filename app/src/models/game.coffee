@@ -31,7 +31,11 @@ class Game extends Spine.Model
         imagedata += chunk
 
       response.on 'end', () ->
-        fsUtils.write(self.imagePath(), imagedata, 'binary', callback)
+        fsUtils.write self.imagePath(), imagedata, 'binary', () ->
+          self.save()
+          callback()
+
+
 
   imageExists: ->
     fsUtils.exists(@imagePath())

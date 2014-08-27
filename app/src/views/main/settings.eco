@@ -1,6 +1,4 @@
-<div class="header">
-  <p class="settings-button btn">Back</p>
-</div>
+<div class="header"></div>
 
 <div class="settings">
   <h1>Settings</h1>

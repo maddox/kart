@@ -14,4 +14,6 @@
   <div class="control-item">
     <img src="images/control-info/start-select.svg" class="start-select" /> Quit Game
   </div>
+
+  <i class="fa fa-gear settings-button" title="Settings"></i>
 </div>

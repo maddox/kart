@@ -27,6 +27,9 @@ class App extends Spine.Stack
 
   default: 'home'
 
+  events:
+    'click .settings-button': 'toggleSettings'
+
   constructor: ->
     super
 
@@ -69,8 +72,8 @@ class App extends Spine.Stack
   showCollectionPicker: (game) ->
     @collectionPicker.show(game)
 
-  showSettings: ->
-    @goTo(@settings)
+  toggleSettings: ->
+    if @settings.isActive() then @back() else @goTo(@settings)
 
   showGames: (collection) ->
     @games.collection = collection

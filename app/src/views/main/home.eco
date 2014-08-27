@@ -1,6 +1,4 @@
-<div class="header">
-  <p class="settings-button btn">Settings</p>
-</div>
+<div class="header"></div>
 
 <section class="browse clearfix">
 

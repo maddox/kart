@@ -3,6 +3,7 @@ Spine._ = require 'underscore'
 
 fsUtils = require '../lib/fs-utils'
 path = require 'path'
+http = require('http')
 
 class Game extends Spine.Model
   @configure "Game", "filePath", "gameConsole"
@@ -18,6 +19,19 @@ class Game extends Spine.Model
 
   imagePath: ->
     path.join(path.dirname(@filePath), 'images', "#{@name()}.png")
+
+  setImage: (url, callback) ->
+    self = @
+
+    http.get url, (response) ->
+      imagedata = ''
+      response.setEncoding('binary')
+
+      response.on 'data', (chunk) ->
+        imagedata += chunk
+
+      response.on 'end', () ->
+        fsUtils.write(self.imagePath(), imagedata, 'binary', callback)
 
   imageExists: ->
     fsUtils.exists(@imagePath())

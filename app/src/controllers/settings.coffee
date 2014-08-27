@@ -11,7 +11,7 @@ class Settings extends Spine.Controller
   elements:
     '#retroarch_path': 'retroarchPathInput'
     '#roms_path': 'romsPathInput'
-    '#retro_mode': 'romsPathInput'
+    '#retro_mode': 'retroMode'
 
   events:
     'click #retroarch_path_button': 'browseRetroarchPath'

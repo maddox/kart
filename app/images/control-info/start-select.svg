@@ -1,25 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="395px" height="72px" viewBox="0 0 395 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+<svg width="403px" height="79px" viewBox="0 0 403 79" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
     <!-- Generator: Sketch 3.0.4 (8054) - http://www.bohemiancoding.com/sketch -->
     <title>buttons 2</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-        <g id="Rectangle-3-+-Rectangle-3" sketch:type="MSLayerGroup" transform="translate(167.000000, 0.000000)" fill="#363636">
-            <rect id="Rectangle-3" sketch:type="MSShapeGroup" x="24.5799133" y="0" width="8" height="56" rx="6"></rect>
-            <rect id="Rectangle-3" sketch:type="MSShapeGroup" transform="translate(28.150781, 28.000000) rotate(-90.000000) translate(-28.150781, -28.000000) " x="24.1156165" y="0" width="8" height="56" rx="6"></rect>
-        </g>
-        <g id="Select-button" sketch:type="MSLayerGroup" transform="translate(0.000000, 4.000000)" fill="#363636">
-            <text id="SELECT" sketch:type="MSTextLayer" font-family="Gen" font-size="50" font-weight="260" sketch:alignment="middle" letter-spacing="-3.75510073">
-                <tspan x="0.115302181" y="36">SELECT</tspan>
-            </text>
-            <rect id="Rectangle-1" sketch:type="MSShapeGroup" x="0" y="44" width="158" height="24" rx="15"></rect>
-        </g>
-        <g id="Select-button" sketch:type="MSLayerGroup" transform="translate(237.000000, 4.000000)" fill="#363636">
-            <text id="START" sketch:type="MSTextLayer" font-family="Gen" font-size="50" font-weight="260" sketch:alignment="middle" letter-spacing="-0.0551020131">
-                <tspan x="1.66275503" y="36">START</tspan>
-            </text>
-            <rect id="Rectangle-1" sketch:type="MSShapeGroup" x="0" y="44" width="158" height="24" rx="15"></rect>
+        <g id="Select-+-Start" sketch:type="MSLayerGroup" fill="#363636">
+            <g id="Plus" transform="translate(175.000000, 7.000000)" sketch:type="MSShapeGroup">
+                <rect id="Rectangle-3" x="24.5799133" y="0" width="8" height="56" rx="6"></rect>
+                <rect id="Rectangle-3" transform="translate(28.150781, 28.000000) rotate(-90.000000) translate(-28.150781, -28.000000) " x="24.1156165" y="0" width="8" height="56" rx="6"></rect>
+            </g>
+            <g id="Select-button">
+                <text id="SELECT" sketch:type="MSTextLayer" font-family="Helvetica" font-size="48" font-weight="normal" sketch:alignment="middle" letter-spacing="-3.1048975">
+                    <tspan x="2.20141125" y="47">SELECT</tspan>
+                </text>
+                <rect id="Rectangle-1" sketch:type="MSShapeGroup" x="8" y="55" width="158" height="24" rx="15"></rect>
+            </g>
+            <g id="Select-button" transform="translate(245.000000, 0.000000)">
+                <text id="START" sketch:type="MSTextLayer" font-family="Helvetica" font-size="48" font-weight="normal" sketch:alignment="middle" letter-spacing="-0.0528979339">
+                    <tspan x="2.65568233" y="47">START</tspan>
+                </text>
+                <rect id="Rectangle-1" sketch:type="MSShapeGroup" x="0" y="55" width="158" height="24" rx="15"></rect>
+            </g>
         </g>
     </g>
 </svg>

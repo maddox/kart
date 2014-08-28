@@ -13,7 +13,8 @@
     "underscore": "1.4.4",
     "less-cache": "~0.12",
     "font-awesome": "4.0.3",
-    "image-size": "0.3.2"
+    "image-size": "0.3.2",
+    "spin.js": "2.0.1"
   },
   "devDependencies": {
   }

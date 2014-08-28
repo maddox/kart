@@ -1,4 +1,8 @@
 <div class="art-editor-modal" style="display:none;">
   <h3 class="status-title"></h3>
   <div class="cards clearfix"></div>
+
+  <div class="footer">
+    Art provided by <a href="http://consolegrid.com">ConsoleGrid</a> • Find more at <a href="http://steambanners.booru.org">Steam Banners</a>
+  </div>
 </div>

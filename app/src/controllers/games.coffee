@@ -32,7 +32,7 @@ class Games extends Cards
   updateGameCard: (game) =>
     index = @games.indexOf(game)
     cardToReplace = @cards[index]
-    $(cardToReplace).find('img').attr('src', game.imagePath())
+    $(cardToReplace).find('img').attr('src', game.imagePath() + "?#{new Date().getTime()}")
 
   launchGame: (game) ->
     @retroArch.launchGame(game)

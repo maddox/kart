@@ -2,6 +2,7 @@ _ = require 'underscore'
 Spine._ = require 'underscore'
 $      = Spine.$
 
+shell = require('shell');
 Spinner = require('spin.js')
 
 class ArtEditor extends Spine.Controller
@@ -45,6 +46,10 @@ class ArtEditor extends Spine.Controller
 
   show: (game) ->
     self = @
+
+    $('.footer a').click (e) ->
+      e.preventDefault()
+      shell.openExternal(e.target.href);
 
     @artEditorModal.modal({
       overlayClose:true,

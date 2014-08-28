@@ -1,8 +1,4 @@
 <div class="art-editor-modal" style="display:none;">
-  <h3>Results for: <span class="result-name"></span></h3>
-  <div class="cards clearfix">
-    <% for art in @art: %>
-      <%- @cardFor(art.url) %>
-    <% end %>
-  </div>
+  <h3 class="status-title"></h3>
+  <div class="cards clearfix"></div>
 </div>

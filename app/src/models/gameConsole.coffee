@@ -30,9 +30,4 @@ class GameConsole extends Spine.Model
     @games = _.map @romPaths(), (path) ->
       new App.Game(filePath: path, gameConsole: gameConsole)
 
-    @games = _.filter @games, (game) ->
-      game.imageExists()
-
-
-
 module.exports = GameConsole

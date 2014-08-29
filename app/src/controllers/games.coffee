@@ -35,7 +35,7 @@ class Games extends Cards
 
   cardFor: (index) ->
     game = @games[index]
-    data = {"imagePath": game.imagePath(), "title": game.name(), "faved": @favorites.isFaved(game)}
+    data = {"image": game.image(), "title": game.name(), "faved": @favorites.isFaved(game)}
     @view 'main/_gameCard', data
 
   addToCollection: (e) ->

@@ -1,6 +1,7 @@
 _ = require 'underscore'
 Spine._ = require 'underscore'
 
+Datauri = require 'datauri'
 fsUtils = require '../lib/fs-utils'
 path = require 'path'
 fs = require 'fs'
@@ -33,6 +34,9 @@ class Collection extends Spine.Model
 
   name: ->
     path.basename(@path)
+
+  image: ->
+    Datauri(@imagePath())
 
   imagePath: ->
     path.join(@path, "image.png")

@@ -1,6 +1,7 @@
 _ = require 'underscore'
 Spine._ = require 'underscore'
 
+Datauri = require 'datauri'
 fsUtils = require '../lib/fs-utils'
 path = require 'path'
 
@@ -18,6 +19,9 @@ class GameConsole extends Spine.Model
 
   romPaths: ->
     fsUtils.listSync(@path(), @extensions)
+
+  image: ->
+    Datauri(@imagePath())
 
   imagePath: ->
     path.join(@path(), 'image.png')

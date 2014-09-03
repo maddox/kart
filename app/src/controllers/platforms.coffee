@@ -49,7 +49,7 @@ class Platforms extends Cards
 
   cardFor: (index) ->
     gameConsole = @gameConsoles[index]
-    data = {"imagePath": gameConsole.imagePath(), "title": gameConsole.name}
+    data = {"image": gameConsole.image(), "title": gameConsole.name}
     @view 'main/_card', data
 
 module.exports = Platforms

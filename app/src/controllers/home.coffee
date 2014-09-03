@@ -86,7 +86,9 @@ class Home extends Spine.Controller
     @render()
 
   cardFor: (game) ->
-    data = {"imagePath": game.imagePath(), "title": game.name()}
+    data = {"image": game.image(), "title": game.name()}
+    data["centerTitle"] = game.name() if !game.imageExists()
+
     @view 'main/_card', data
 
   numberOfGames: ->

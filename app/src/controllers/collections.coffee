@@ -27,7 +27,7 @@ class Collections extends Cards
 
   cardFor: (index) ->
     collection = @collections[index]
-    data = {"imagePath": collection.imagePath(), "title": collection.name()}
+    data = {"image": collection.image(), "title": collection.name()}
     @view 'main/_card', data
 
 module.exports = Collections

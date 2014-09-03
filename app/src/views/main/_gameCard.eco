@@ -2,7 +2,9 @@
   <div class="overlay">
     <div class="game-image">
       <img src="<%= @image %>" />
-      <h2 class="default-title"><%= @defaultTitle %></h2>
+      <% if !@imageExists: %>
+        <h2 class="default-title"><%= @title %></h2>
+      <% end %>
     </div>
     <p class="marquee">
       <span class="title"><%= @title %></span>

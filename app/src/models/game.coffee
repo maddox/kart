@@ -18,9 +18,6 @@ class Game extends Spine.Model
   name: ->
     path.basename(@filePath, path.extname(@filePath))
 
-  defaultTitle: ->
-    if !@imageExists() then @name() else ''
-
   image: ->
     if @imageExists()
       Datauri(@imagePath())

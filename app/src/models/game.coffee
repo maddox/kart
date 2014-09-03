@@ -25,7 +25,10 @@ class Game extends Spine.Model
     if @imageExists()
       Datauri(@imagePath())
     else
-      Geopattern.generate(@name()).toDataUri()
+      pattern = Geopattern.generate(@name())
+      pattern.svg.setWidth(460)
+      pattern.svg.setHeight(215)
+      pattern.toDataUri()
 
   imagePath: ->
     path.join(path.dirname(@filePath), 'images', "#{@name()}.png")

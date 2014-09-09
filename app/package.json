@@ -8,7 +8,6 @@
     "datauri": "^0.5.5",
     "eco": "~1.0",
     "font-awesome": "4.0.3",
-    "geopattern": "^1.2.1",
     "image-size": "0.3.2",
     "less": "git://github.com/nathansobo/less.js.git",
     "less-cache": "~0.12",

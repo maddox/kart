@@ -25,6 +25,9 @@ class GameConsole extends Spine.Model
   imagePath: ->
     path.join(@path(), 'image.png')
 
+  gameCardImagePath: ->
+    path.join(__dirname, 'images', 'default-art', 'game-consoles', @prefix, 'gameCard.png')
+
   imageExists: ->
     fsUtils.exists(@imagePath())
 

@@ -16,16 +16,16 @@ class Game extends Spine.Model
   name: ->
     path.basename(@filePath, path.extname(@filePath))
 
-  image: ->
+  imagePath: ->
     if @imageExists()
-      @imagePath()
+      @customCardPath()
     else
       @gameConsole.gameCardImagePath()
 
-  imagePath: ->
+  customCardPath: ->
     path.join(path.dirname(@filePath), 'images', "#{@name()}.png")
 
   imageExists: ->
-    fsUtils.exists(@imagePath())
+    fsUtils.exists(@customCardPath())
 
 module.exports = Game

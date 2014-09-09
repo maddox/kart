@@ -1,7 +1,5 @@
 _ = require 'underscore'
 Spine._ = require 'underscore'
-Geopattern = require 'geopattern'
-Datauri = require 'datauri'
 
 fsUtils = require '../lib/fs-utils'
 path = require 'path'
@@ -20,9 +18,9 @@ class Game extends Spine.Model
 
   image: ->
     if @imageExists()
-      Datauri(@imagePath())
+      @imagePath()
     else
-      Datauri(@gameConsole.imagePath())
+      @gameConsole.gameCardImagePath()
 
   imagePath: ->
     path.join(path.dirname(@filePath), 'images', "#{@name()}.png")

@@ -3,7 +3,6 @@
   "main": "./main.js",
   "dependencies": {
     "async": "0.2.6",
-    "coffee-cache": "~0.2.0",
     "coffee-script": "~1.6.3",
     "eco": "~1.0",
     "font-awesome": "4.0.3",

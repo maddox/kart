@@ -31,8 +31,9 @@ class Games extends Cards
 
   updateGameCard: (game) =>
     index = @games.indexOf(game)
-    cardToReplace = @cards[index]
-    $(cardToReplace).find('img').attr('src', game.imagePath() + "?#{new Date().getTime()}")
+    cardForGame = $(@cards[index])
+    cardForGame.find('img').attr('src', game.imagePath() + "?#{new Date().getTime()}")
+    cardForGame.find('.center-title').html('') if game.imagePath()
 
   launchGame: (game) ->
     @retroArch.launchGame(game)

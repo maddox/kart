@@ -94,6 +94,7 @@ class ArtEditor extends Spine.Controller
 
       onClose: (modal) ->
         self.cards.html("")
+        $('.art-url').val("")
         $.modal.close()
     })
 

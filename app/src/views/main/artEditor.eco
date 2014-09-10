@@ -1,4 +1,12 @@
 <div class="art-editor-modal" style="display:none;">
+  <h2>Update art with a URL</h2>
+
+  <form name="art-url-form" class="art-url-form" action="#" method="get">
+    <input type="text" class="art-url" placeholder="http://img.booru.org/steambanners//images/3/8294c733e08d1d91cd40282216b72023cb5524cb.jpg">
+    <input type="submit" value="Update Art">
+  </form>
+
+  <h2>Or choose from the art below</h2>
   <h3 class="status-title"></h3>
   <div class="cards clearfix"></div>
 

@@ -20,7 +20,7 @@ class Game extends Spine.Model
     if @imageExists()
       @customCardPath()
     else
-      @gameConsole.gameCardImagePath()
+      @gameConsole.gameCardPath()
 
   customCardPath: ->
     path.join(path.dirname(@filePath), 'images', "#{@name()}.png")

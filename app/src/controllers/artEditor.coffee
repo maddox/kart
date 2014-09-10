@@ -44,12 +44,22 @@ class ArtEditor extends Spine.Controller
     data = {"imagePath": url, "title": ""}
     @view 'main/_card', data
 
+  updateArtWithUrl: (game) ->
+    artUrl = $('.art-url').val()
+    if artUrl.length > 0
+      game.setImage artUrl, () ->
+        $.modal.close()
+
   show: (game) ->
     self = @
 
     $('.footer a').click (e) ->
       e.preventDefault()
       shell.openExternal(e.target.href);
+
+    $('.art-url-form').submit (e) ->
+      e.preventDefault()
+      self.updateArtWithUrl(game)
 
     @artEditorModal.modal({
       overlayClose:true,

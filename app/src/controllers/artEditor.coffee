@@ -62,20 +62,25 @@ class ArtEditor extends Spine.Controller
         self.spinner.spin()
         self.artEditorModal.append(self.spinner.el)
 
-        $.get "http://console-grid-api.herokuapp.com/search?q=#{encodeURI(game.name())}", (data) ->
-          self.spinner.stop()
-          self.statusTitle.html("Found: #{data.name}")
-          self.art = data.art
+        $.ajax "http://console-grid-api.herokuapp.com/search?q=#{encodeURI(game.name())}",
+            type: 'GET'
+            error: (xhr, textStatus, error) ->
+              self.spinner.stop()
+              self.statusTitle.html("Nothing Found")
+            success: (data, textStatus, xhr) ->
+              self.spinner.stop()
+              self.statusTitle.html("Found: #{data.name}")
+              self.art = data.art
 
-          for art in self.art
-            el = self.cardFor(art.url)
-            self.cards.append(el)
+              for art in self.art
+                el = self.cardFor(art.url)
+                self.cards.append(el)
 
-          $(modal.container).find('.card').click (e) ->
-            card = $(e.currentTarget)
-            art = self.art[card.index()]
-            game.setImage art.url, () ->
-              $.modal.close()
+              $(modal.container).find('.card').click (e) ->
+                card = $(e.currentTarget)
+                art = self.art[card.index()]
+                game.setImage art.url, () ->
+                  $.modal.close()
 
       onClose: (modal) ->
         self.cards.html("")

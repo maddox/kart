@@ -1,7 +1,7 @@
 <div class="card game-card">
   <div class="overlay">
     <div class="content">
-      <img src="<%= @image %>" />
+      <img src="<%= @imagePath %>" />
       <p class="center-title"><%= @centerTitle %></p>
     </div>
     <p class="marquee">

@@ -19,7 +19,7 @@ class CollectionPicker extends Spine.Controller
     @html @view 'main/collectionPicker', @
 
   cardFor: (collection) ->
-    data = {"image": collection.image(), "title": collection.name()}
+    data = {"imagePath": collection.imagePath(), "title": collection.name()}
     @view 'main/_card', data
 
   show: (game) ->

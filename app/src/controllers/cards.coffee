@@ -151,7 +151,7 @@ class Cards extends Spine.Controller
 
   cardFor: (index) ->
     console.log("overide this to render a card")
-    data = {"image": "", "title": "Check Console"}
+    data = {"imagePath": "", "title": "Check Console"}
     @view 'main/_card', data
 
   click: (e) ->

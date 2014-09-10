@@ -34,9 +34,6 @@ class Collection extends Spine.Model
   name: ->
     path.basename(@path)
 
-  image: ->
-    Datauri(@imagePath())
-
   imagePath: ->
     path.join(@path, "image.png")
 

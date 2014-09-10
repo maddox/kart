@@ -33,6 +33,10 @@ class Game extends Spine.Model
       imagedata = ''
       response.setEncoding('binary')
 
+      response.on 'error', (e) ->
+        console.log("Error fetching: " + e.message);
+        callback()
+
       response.on 'data', (chunk) ->
         imagedata += chunk
 

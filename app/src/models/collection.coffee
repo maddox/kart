@@ -1,7 +1,6 @@
 _ = require 'underscore'
 Spine._ = require 'underscore'
 
-Datauri = require 'datauri'
 fsUtils = require '../lib/fs-utils'
 path = require 'path'
 fs = require 'fs'

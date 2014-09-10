@@ -12,6 +12,7 @@ class GameConsole extends Spine.Model
     @games = []
     @settings = new App.Settings
     @loadGames()
+    @defaultArtPath = path.join(__dirname, '..', '..', 'images', 'default-art', 'game-consoles', @prefix)
 
   path: ->
     path.join(@settings.romsPath(), @prefix)
@@ -22,6 +23,9 @@ class GameConsole extends Spine.Model
   imagePath: ->
     path.join(@path(), 'image.png')
 
+  gameCardPath: ->
+    path.join(@defaultArtPath, 'gameCard.png')
+
   imageExists: ->
     fsUtils.exists(@imagePath())
 
@@ -29,10 +33,5 @@ class GameConsole extends Spine.Model
     gameConsole = @
     @games = _.map @romPaths(), (path) ->
       new App.Game(filePath: path, gameConsole: gameConsole)
-
-    @games = _.filter @games, (game) ->
-      game.imageExists()
-
-
 
 module.exports = GameConsole

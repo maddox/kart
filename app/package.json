@@ -2,20 +2,21 @@
   "name": "Kart",
   "main": "./main.js",
   "dependencies": {
-    "mkdirp": "0.3.5",
-    "eco": "~1.0",
     "async": "0.2.6",
-    "rimraf": "2.1.4",
-    "tantamount": "0.3.0",
-    "coffee-script": "~1.6.3",
     "coffee-cache": "~0.2.0",
+    "coffee-script": "~1.6.3",
+    "eco": "~1.0",
+    "font-awesome": "4.0.3",
+    "image-size": "0.3.2",
     "less": "git://github.com/nathansobo/less.js.git",
-    "underscore": "1.4.4",
     "less-cache": "~0.12",
     "font-awesome": "4.0.3",
     "image-size": "0.3.2",
-    "spin.js": "2.0.1"
+    "spin.js": "2.0.1",
+    "mkdirp": "0.3.5",
+    "rimraf": "2.1.4",
+    "tantamount": "0.3.0",
+    "underscore": "1.4.4"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }

@@ -1,6 +1,9 @@
 <div class="card game-card">
   <div class="overlay">
-    <img src="<%= @imagePath %>"></img>
+    <div class="content">
+      <img src="<%= @imagePath %>" />
+      <p class="center-title"><%= @centerTitle %></p>
+    </div>
     <p class="marquee">
       <span class="title"><%= @title %></span>
       <span class="game-settings"><i class="fa fa-plus-square add-collection" title="Add to Collection"></i> <i class="fa fa-heart<%= "-o" if !@faved %> toggle-favorite" title="Toggle Favorite"></i> <i class="fa fa-refresh edit-art" title="Edit Art"></i></span>

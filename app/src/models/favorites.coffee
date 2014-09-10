@@ -28,9 +28,6 @@ class Favorites extends Spine.Model
           gameConsole = new App.GameConsole(prefix: gameBlob['gameConsole'])
           @games.push(new App.Game(filePath: romPath, gameConsole: gameConsole))
 
-      _.filter @games, (game) ->
-        game.imageExists()
-
   save: ->
     data = {'games': @games}
     fsUtils.writeSync(@filePath(), JSON.stringify(data))

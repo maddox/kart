@@ -20,9 +20,6 @@ class GameConsole extends Spine.Model
   romPaths: ->
     fsUtils.listSync(@path(), @extensions)
 
-  image: ->
-    @imagePath()
-
   imagePath: ->
     path.join(@path(), 'image.png')
 

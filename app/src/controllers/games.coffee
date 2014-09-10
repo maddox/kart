@@ -10,6 +10,7 @@ class Games extends Cards
   events:
     'click .card .overlay .game-settings .add-collection': 'addToCollection'
     'click .card .overlay .game-settings .toggle-favorite': 'toggleFavorite'
+    'click .card .overlay .game-settings .edit-art': 'editArt'
 
   constructor: ->
     super
@@ -22,7 +23,17 @@ class Games extends Cards
   build: ->
     super
 
-    @games = @collection.games if @collection
+    if @collection
+      @games = @collection.games
+
+      for game in @games
+        game.bind("save", @updateGameCard)
+
+  updateGameCard: (game) =>
+    index = @games.indexOf(game)
+    cardForGame = $(@cards[index])
+    cardForGame.find('img').attr('src', game.imagePath() + "?#{new Date().getTime()}")
+    cardForGame.find('.center-title').html('') if game.imagePath()
 
   launchGame: (game) ->
     @retroArch.launchGame(game)
@@ -40,6 +51,13 @@ class Games extends Cards
     data["centerTitle"] = game.name() if !game.imageExists()
 
     @view 'main/_gameCard', data
+
+  editArt: (e) ->
+    e.stopPropagation()
+    card = $(e.currentTarget).parents('.card')
+    index = card.index() + (@page*@perPage)
+
+    app.showArtEditor(@games[index])
 
   addToCollection: (e) ->
     e.stopPropagation()

@@ -4,8 +4,8 @@
   <title>Kart</title>
   <script>
     window.onload = function() {
-      var currentWindow = require('remote').getCurrentWindow();
-      // currentWindow.openDevTools();
+      var remote = require('remote')
+      var currentWindow = remote.getCurrentWindow();
 
       try {
 

@@ -19,7 +19,28 @@ app.on('window-all-closed', function() {
 // initialization and ready for creating browser windows.
 app.on('ready', function() {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 1280, height: 720, kiosk: true});
+  mainWindow = new BrowserWindow({width: 1280, height: 720, kiosk: true, 'auto-hide-menu-bar': true});
+
+  var menuTemplate = [{
+    label: 'View',
+    submenu: [
+      {
+        label: 'Reload',
+        accelerator: 'Ctrl+R',
+        click: function() { BrowserWindow.getFocusedWindow().reloadIgnoringCache(); }
+      },
+      {
+        label: 'Toggle DevTools',
+        accelerator: 'Ctrl+Alt+I',
+        click: function() { BrowserWindow.getFocusedWindow().toggleDevTools(); }
+      }
+    ]
+  }]
+
+  var Menu = require('menu');
+  var MenuItem = require('menu-item');
+  var menu = Menu.buildFromTemplate(menuTemplate);
+  mainWindow.setMenu(menu);
 
   // and load the index.html of the app.
   mainWindow.loadUrl('file://' + __dirname + '/index.html');

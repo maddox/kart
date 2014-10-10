@@ -1,6 +1,6 @@
 var app = require('app');  // Module to control application life.
 var BrowserWindow = require('browser-window');  // Module to create native browser window.
-
+var kartMenuTemplate = require('./kartMenuTemplate');
 
 // Report crashes to our server.
 // require('crash-reporter').start();
@@ -21,25 +21,9 @@ app.on('ready', function() {
   // Create the browser window.
   mainWindow = new BrowserWindow({width: 1280, height: 720, kiosk: true, 'auto-hide-menu-bar': true});
 
-  var menuTemplate = [{
-    label: 'View',
-    submenu: [
-      {
-        label: 'Reload',
-        accelerator: 'Ctrl+R',
-        click: function() { BrowserWindow.getFocusedWindow().reloadIgnoringCache(); }
-      },
-      {
-        label: 'Toggle DevTools',
-        accelerator: 'Ctrl+Alt+I',
-        click: function() { BrowserWindow.getFocusedWindow().toggleDevTools(); }
-      }
-    ]
-  }]
-
   var Menu = require('menu');
   var MenuItem = require('menu-item');
-  var menu = Menu.buildFromTemplate(menuTemplate);
+  var menu = Menu.buildFromTemplate(kartMenuTemplate.template);
   mainWindow.setMenu(menu);
 
   // and load the index.html of the app.

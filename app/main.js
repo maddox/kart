@@ -23,7 +23,7 @@ app.on('ready', function() {
 
   var Menu = require('menu');
   var MenuItem = require('menu-item');
-  var menu = Menu.buildFromTemplate(kartMenuTemplate.template);
+  var menu = Menu.buildFromTemplate(kartMenuTemplate.getTemplate(mainWindow));
   mainWindow.setMenu(menu);
 
   // and load the index.html of the app.

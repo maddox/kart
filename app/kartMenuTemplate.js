@@ -1,5 +1,15 @@
 exports.template = [
   {
+    label: 'File',
+    submenu: [
+      {
+        label: 'Quit',
+        accelerator: 'CommandOrControl+Q',
+        click: function() { app.quit(); }
+      }
+    ]
+  },
+  {
     label: 'View',
     submenu: [
       {

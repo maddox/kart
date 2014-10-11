@@ -8,6 +8,14 @@
       var currentWindow = remote.getCurrentWindow();
 
       try {
+        var args = remote.process.argv.slice(1);
+        var devArgs = args.filter(function(arg) {
+          return arg.indexOf("--dev") != -1;
+        });
+
+        if (devArgs.length != 0) {
+          currentWindow.openDevTools();
+        }
 
         var path = require('path')
 

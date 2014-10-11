@@ -5,7 +5,7 @@ Param(
 $args = @(Resolve-Path app)
 
 if ($dev) {
-  $args += "--dev=true"
+  $args += "-dev"
 }
 
 Start-Process -FilePath .\atom-shell\atom.exe -ArgumentList $args

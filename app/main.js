@@ -19,7 +19,7 @@ app.on('window-all-closed', function() {
 // initialization and ready for creating browser windows.
 app.on('ready', function() {
   var devMode = process.argv.slice(1).filter(function(arg) {
-    return arg.indexOf("-dev") != -1;
+    return arg.indexOf("--dev") != -1;
   }).length != 0;
 
 

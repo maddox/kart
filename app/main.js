@@ -18,8 +18,17 @@ app.on('window-all-closed', function() {
 // This method will be called when atom-shell has done everything
 // initialization and ready for creating browser windows.
 app.on('ready', function() {
+  var devMode = process.argv.slice(1).filter(function(arg) {
+    return arg.indexOf("-dev") != -1;
+  }).length != 0;
+
+
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 1280, height: 720, kiosk: true, 'auto-hide-menu-bar': true});
+  mainWindow = new BrowserWindow({width: 1280, height: 720, kiosk: true, 'auto-hide-menu-bar': !devMode});
+
+  if (devMode) {
+    mainWindow.openDevTools();
+  }
 
   var Menu = require('menu');
   var MenuItem = require('menu-item');

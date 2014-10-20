@@ -32,7 +32,7 @@ app.on('ready', function() {
   var Menu = require('menu');
   var MenuItem = require('menu-item');
   var menu = Menu.buildFromTemplate(kartMenuTemplate.getTemplate(mainWindow));
-  mainWindow.setMenu(menu);
+  Menu.setApplicationMenu(menu);
 
   // and load the index.html of the app.
   mainWindow.loadUrl('file://' + __dirname + '/index.html');

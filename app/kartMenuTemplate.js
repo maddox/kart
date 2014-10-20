@@ -1,4 +1,4 @@
-exports.getTemplate = function(mainWindow) {
+exports.getTemplate = function(app, mainWindow) {
   return [
     {
       label: 'File',
@@ -6,7 +6,7 @@ exports.getTemplate = function(mainWindow) {
         {
           label: 'Quit',
           accelerator: 'CommandOrControl+Q',
-          click: function() { mainWindow.close(); }
+          click: function() { app.quit(); }
         }
       ]
     },

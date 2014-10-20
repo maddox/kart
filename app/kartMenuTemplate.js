@@ -1,16 +1,6 @@
 exports.getTemplate = function(mainWindow) {
   return [
     {
-      label: 'File',
-      submenu: [
-        {
-          label: 'Quit',
-          accelerator: 'CommandOrControl+Q',
-          click: function() { mainWindow.quit(); }
-        }
-      ]
-    },
-    {
       label: 'View',
       submenu: [
         {

@@ -1,6 +1,6 @@
 var app = require('app');  // Module to control application life.
 var BrowserWindow = require('browser-window');  // Module to create native browser window.
-
+var kartMenuTemplate = require('./kartMenuTemplate');
 
 // Report crashes to our server.
 // require('crash-reporter').start();
@@ -18,8 +18,21 @@ app.on('window-all-closed', function() {
 // This method will be called when atom-shell has done everything
 // initialization and ready for creating browser windows.
 app.on('ready', function() {
-  // Create the browser window.
-  mainWindow = new BrowserWindow({width: 1280, height: 720, kiosk: true});
+  // Parse arguments and default devMode to false unless the --dev flag is present
+  var argv = require('minimist')(process.argv.slice(1));
+  var devMode = argv.dev || false;
+
+  // Create the browser window
+  mainWindow = new BrowserWindow({width: 1280, height: 720, kiosk: true, 'auto-hide-menu-bar': !devMode});
+
+  if (devMode) {
+    mainWindow.openDevTools();
+  }
+
+  var Menu = require('menu');
+  var MenuItem = require('menu-item');
+  var menu = Menu.buildFromTemplate(kartMenuTemplate.getTemplate(app, mainWindow));
+  Menu.setApplicationMenu(menu);
 
   // and load the index.html of the app.
   mainWindow.loadUrl('file://' + __dirname + '/index.html');

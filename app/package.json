@@ -10,6 +10,7 @@
     "image-size": "0.3.2",
     "less": "git://github.com/nathansobo/less.js.git",
     "less-cache": "~0.12",
+    "minimist": "^1.1.0",
     "mkdirp": "0.3.5",
     "rimraf": "2.1.4",
     "tantamount": "0.3.0",

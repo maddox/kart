@@ -12,22 +12,22 @@ a desktop window just fine.
 ![kart emulator retroarch frontend](https://cloud.githubusercontent.com/assets/260/2924359/aec71d2e-d731-11e3-8bee-97b6e1b60680.png)
 ## Platforms
 
-Kart is powered by [Atom Shell](https://github.com/atom/atom-shell), a cross
+Kart is powered by [Electron](https://github.com/atom/electron), a cross
 platform application shell.
 
-While it's being developed in Mac OS X, Atom Shell is multi-platform so Kart
+While it's being developed in Mac OS X, Electron is multi-platform so Kart
 will easily eventually work on Windows and Linux.
 
 
 ## Tech Stack
 
-From the Atom Shell README:
+From the Electron README:
 
-> Atom Shell lets you write cross-platform desktop applications using JavaScript,
+> Electron lets you write cross-platform desktop applications using JavaScript,
 HTML and CSS. It is based on node.js and Chromium and is used in the Atom
 editor.
 
-Atom Shell wraps up [Chromium](http://www.chromium.org) and integrates it with
+Electron wraps up [Chromium](http://www.chromium.org) and integrates it with
 Node.js so you have access to the local system. This allows for really fast
 iterative development for an application of this nature.
 

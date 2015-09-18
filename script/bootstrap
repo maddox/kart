@@ -3,6 +3,6 @@
 cd "$(dirname "${BASH_SOURCE[0]}" )/.."
 export APP_VERSION=`cat VERSION`
 apm install
-npm install grunt-download-atom-shell
+npm install grunt-download-electron
 rm -r atom-shell
 grunt bootstrap

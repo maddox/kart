@@ -1,3 +1,3 @@
 #!/bin/bash
 
-open "./atom-shell/`ls atom-shell/ | grep app`" --args --dev "$@"
+open "./electron/`ls electron/ | grep app`" --args --dev "$@"

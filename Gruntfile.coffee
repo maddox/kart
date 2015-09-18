@@ -24,10 +24,10 @@ module.exports = (grunt) ->
           force: true
           overwrite: true
 
-    'download-atom-shell':
+    'download-electron':
       version: packageJson.atomShellVersion
-      outputDir: path.join('atom-shell')
-      downloadDir: path.join(os.tmpdir(), 'downloaded-atom-shell')
+      outputDir: path.join('electron')
+      downloadDir: path.join(os.tmpdir(), 'downloaded-electron')
       rebuild: true  # rebuild native modules after atom-shell is updated
 
     shell:
@@ -48,9 +48,9 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-symbolic-link')
   grunt.loadNpmTasks('grunt-shell')
-  grunt.loadNpmTasks('grunt-download-atom-shell')
+  grunt.loadNpmTasks('grunt-download-electron')
   grunt.loadTasks('tasks')
 
-  grunt.registerTask('bootstrap', ['download-atom-shell', 'symlink:app', 'generate-plist', 'shell:app-apm-install'])
-  grunt.registerTask('bootstrap-win', ['download-atom-shell', 'shell:app-apm-install'])
-  grunt.registerTask('build', ['download-atom-shell', 'shell:app-apm-install', 'copy:app', 'generate-plist'])
+  grunt.registerTask('bootstrap', ['grunt-download-electron', 'symlink:app', 'generate-plist', 'shell:app-apm-install'])
+  grunt.registerTask('bootstrap-win', ['download-electron', 'shell:app-apm-install'])
+  grunt.registerTask('build', ['grunt-download-electron', 'shell:app-apm-install', 'copy:app', 'generate-plist'])

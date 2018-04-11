@@ -1,5 +1,7 @@
 # Kart!!
 
+:warning: This repo and project is defunct. It is not maintained and was originally created when Electron was named Atom Shell.
+
 Kart is a frontend to the amazing multi-emulating system
 [RetroArch](https://github.com/libretro/RetroArch).
 
